@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Liên hệ | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+      </div>
+    </nav>
+    <div class="container my-5">
+      <h2 class="fw-bold mb-4">Liên hệ với chúng tôi</h2>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body">
+              <h5 class="fw-bold mb-3">Gửi tin nhắn</h5>
+              <form onsubmit="sendContact(event)">
+                <div class="mb-3">
+                  <input
+                    id="cfName"
+                    class="form-control"
+                    placeholder="Họ tên *"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    id="cfEmail"
+                    type="email"
+                    class="form-control"
+                    placeholder="Email *"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    id="cfPhone"
+                    class="form-control"
+                    placeholder="Số điện thoại *"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <input
+                    id="cfSub"
+                    class="form-control"
+                    placeholder="Chủ đề *"
+                    required
+                  />
+                </div>
+                <div class="mb-3">
+                  <textarea
+                    id="cfMsg"
+                    class="form-control"
+                    rows="4"
+                    placeholder="Nội dung *"
+                    required
+                    minlength="10"
+                  ></textarea>
+                </div>
+                <button class="btn btn-warning fw-bold">Gửi tin nhắn</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm mb-3">
+            <div class="card-body">
+              <h5 class="fw-bold mb-3">Thông tin liên hệ</h5>
+              <p>
+                <i class="bi bi-geo-alt-fill text-warning"></i> 123 Nguyễn Văn
+                Cừ, Q.5, TP.HCM
+              </p>
+              <p><i class="bi bi-telephone-fill text-warning"></i> 1900 1234</p>
+              <p>
+                <i class="bi bi-envelope-fill text-warning"></i>
+                hello@techzone.vn
+              </p>
+              <p><i class="bi bi-clock-fill text-warning"></i> 8:00 - 22:00</p>
+            </div>
+          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.9!2d106.68!3d10.76!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0!2zMTDCsDQ1JzM2LjAiTiAxMDbCsDQwJzQ4LjAiRQ!5e0!3m2!1svi!2svn!4v1"
+            width="100%"
+            height="300"
+            style="border: 0; border-radius: 12px"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      function sendContact(e) {
+        e.preventDefault();
+        const phone = document.getElementById("cfPhone").value.trim();
+        if (!/^0\d{9}$/.test(phone))
+          return showToast("SĐT không hợp lệ", "error");
+        showToast("Cảm ơn bạn! Chúng tôi sẽ phản hồi sớm.", "success");
+        e.target.reset();
+      }
+    </script>
+  </body>
+</html>

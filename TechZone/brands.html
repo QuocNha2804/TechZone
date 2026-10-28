@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thương hiệu | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <style>
+      .brand-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        transition: all 0.3s;
+        cursor: pointer;
+        height: 100%;
+      }
+      .brand-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--primary);
+      }
+      .brand-card .logo-wrap {
+        background: #fff;
+        border-radius: 14px;
+        padding: 1rem;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      .brand-card .logo-wrap img {
+        max-height: 48px;
+        max-width: 100%;
+        object-fit: contain;
+      }
+      .brand-card:hover .logo-wrap img {
+        transform: scale(1.08);
+        transition: transform 0.3s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <div class="d-none d-md-flex gap-4">
+          <span><i class="bi bi-telephone-fill"></i> Hotline: 1900 1234</span>
+          <span><i class="bi bi-truck"></i> Freeship đơn 500K</span>
+          <span><i class="bi bi-arrow-repeat"></i> Đổi trả 30 ngày</span>
+        </div>
+        <div><i class="bi bi-tag-fill"></i> Flash Sale giảm tới 50%!</div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+                ><i class="bi bi-grid-3x3-gap"></i> Danh mục</a
+              >
+              <ul class="dropdown-menu shadow">
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=phone"
+                    >📱 Điện thoại</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=laptop"
+                    >💻 Laptop</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=tablet"
+                    >📲 Tablet</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=accessory"
+                    >🎧 Phụ kiện</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=watch"
+                    >⌚ Đồng hồ</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="brands.html">Thương hiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Tin công nghệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="search-wrap me-3">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Tìm sản phẩm, thương hiệu..."
+            />
+            <div id="searchSuggestions"></div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <a href="wishlist.html" class="badge-icon" title="Yêu thích"
+              ><i class="bi bi-heart"></i
+              ><span class="badge wishlist-badge">0</span></a
+            >
+            <a href="compare.html" class="badge-icon" title="So sánh"
+              ><i class="bi bi-arrow-left-right"></i
+              ><span class="badge compare-badge">0</span></a
+            >
+            <a href="cart.html" class="badge-icon" title="Giỏ hàng"
+              ><i class="bi bi-cart3"></i
+              ><span class="badge cart-badge">0</span></a
+            >
+            <button
+              class="btn btn-sm btn-outline-secondary theme-toggle"
+              onclick="toggleTheme()"
+            >
+              <i class="bi bi-moon-fill"></i>
+            </button>
+            <div id="auth-area"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="container mt-3">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item active">Thương hiệu</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="container my-4">
+      <div
+        class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2"
+      >
+        <div>
+          <h2 class="fw-bold mb-1">
+            <i class="bi bi-award text-warning"></i> Thương hiệu chính hãng
+          </h2>
+          <p class="text-muted mb-0 small">
+            Tổng hợp các thương hiệu công nghệ hàng đầu thế giới
+          </p>
+        </div>
+        <div class="input-group" style="max-width: 300px">
+          <span class="input-group-text"><i class="bi bi-search"></i></span>
+          <input
+            type="text"
+            id="brandFilter"
+            class="form-control"
+            placeholder="Tìm thương hiệu..."
+          />
+        </div>
+      </div>
+
+      <div class="row g-4" id="brandsGrid"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="text-center small py-4">
+          &copy; 2024 TechZone. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <button id="backTop"><i class="bi bi-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+      /* ================= BRANDS PAGE ================= */
+      let allBrands = [...brands];
+
+      function renderBrands(list) {
+        const grid = document.getElementById("brandsGrid");
+        if (!list.length) {
+          grid.innerHTML = `
+            <div class="col-12 text-center py-5 text-muted">
+              <i class="bi bi-emoji-frown display-1"></i>
+              <p class="mt-3">Không tìm thấy thương hiệu phù hợp.</p>
+            </div>`;
+          return;
+        }
+        grid.innerHTML = list
+          .map((b) => {
+            const count = products.filter((p) => p.brand === b.id).length;
+            const cats = [
+              ...new Set(
+                products.filter((p) => p.brand === b.id).map((p) => p.category),
+              ),
+            ];
+            return `
+              <div class="col-6 col-md-4 col-lg-3">
+                <div class="brand-card" onclick="location.href='brand-detail.html?id=${b.id}'">
+                  <div class="logo-wrap">
+                    <img src="${b.logo}" alt="${b.name}" loading="lazy" />
+                  </div>
+                  <h5 class="fw-bold mb-1">${b.name}</h5>
+                  <p class="text-muted small mb-2">${b.desc}</p>
+                  <div class="d-flex justify-content-center flex-wrap gap-1 mb-2">
+                    ${cats
+                      .slice(0, 3)
+                      .map((c) => {
+                        const cat = categories.find((x) => x.id === c);
+                        return `<span class="badge bg-light text-dark border small">${cat ? cat.name : c}</span>`;
+                      })
+                      .join("")}
+                  </div>
+                  <span class="badge bg-warning text-dark">${count} sản phẩm</span>
+                </div>
+              </div>`;
+          })
+          .join("");
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        renderBrands(allBrands);
+
+        // Filter theo tên
+        const filterInput = document.getElementById("brandFilter");
+        if (filterInput) {
+          filterInput.addEventListener("input", (e) => {
+            const q = e.target.value.trim().toLowerCase();
+            const filtered = q
+              ? allBrands.filter(
+                  (b) =>
+                    b.name.toLowerCase().includes(q) ||
+                    b.desc.toLowerCase().includes(q),
+                )
+              : allBrands;
+            renderBrands(filtered);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
