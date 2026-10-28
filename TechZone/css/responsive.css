@@ -1,0 +1,10 @@
+@media (min-width: 576px) {
+  .product-card .price {
+    font-size: 1.05rem;
+  }
+}
+@media (min-width: 992px) {
+  .hero-slide h1 {
+    letter-spacing: -0.5px;
+  }
+}

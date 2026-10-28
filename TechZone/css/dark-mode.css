@@ -1,0 +1,27 @@
+/* Đã tích hợp vào style.css qua biến CSS -- nếu cần bổ sung */
+html.dark .product-thumb {
+  background: #0f172a;
+}
+html.dark .brand-logo-box {
+  background: #fff;
+}
+html.dark .hero-slide {
+  color: #000;
+}
+html.dark .btn-outline-dark {
+  color: #fff;
+  border-color: #64748b;
+}
+html.dark .btn-outline-dark:hover {
+  background: var(--primary);
+  color: #000;
+}
+html.dark .table {
+  color: var(--text);
+}
+html.dark .form-control,
+html.dark .form-select {
+  background: var(--bg-secondary);
+  color: var(--text);
+  border-color: var(--border);
+}
