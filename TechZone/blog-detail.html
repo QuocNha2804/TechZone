@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bài viết | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <style>
+      .article-body {
+        font-size: 1.05rem;
+        line-height: 1.85;
+        color: var(--text);
+      }
+      .article-body h2 {
+        font-weight: 800;
+        margin: 2rem 0 1rem;
+        font-size: 1.5rem;
+      }
+      .article-body h3 {
+        font-weight: 700;
+        margin: 1.5rem 0 0.75rem;
+        font-size: 1.2rem;
+      }
+      .article-body p {
+        margin-bottom: 1rem;
+      }
+      .article-body img {
+        border-radius: 14px;
+        margin: 1.5rem 0;
+        width: 100%;
+      }
+      .article-body blockquote {
+        border-left: 4px solid var(--primary);
+        background: rgba(245, 158, 11, 0.08);
+        padding: 1rem 1.25rem;
+        border-radius: 0 12px 12px 0;
+        font-style: italic;
+        margin: 1.5rem 0;
+      }
+      .article-body ul,
+      .article-body ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+      .article-body li {
+        margin-bottom: 0.4rem;
+      }
+      .author-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--primary);
+      }
+      .share-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.1rem;
+      }
+      .share-btn:hover {
+        transform: translateY(-3px);
+        color: #fff;
+      }
+      .share-fb {
+        background: #1877f2;
+      }
+      .share-zalo {
+        background: #0068ff;
+      }
+      .share-tw {
+        background: #1da1f2;
+      }
+      .share-copy {
+        background: #6b7280;
+        border: none;
+        cursor: pointer;
+      }
+      .tag-cloud a {
+        display: inline-block;
+        padding: 0.3rem 0.8rem;
+        background: var(--bg-secondary);
+        border-radius: 20px;
+        margin: 0.2rem;
+        font-size: 0.85rem;
+        text-decoration: none;
+        color: var(--text);
+        border: 1px solid var(--border);
+      }
+      .tag-cloud a:hover {
+        background: var(--primary);
+        color: #000;
+        border-color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <span><i class="bi bi-telephone-fill"></i> Hotline: 1900 1234</span>
+        <span><i class="bi bi-truck"></i> Freeship đơn 500K</span>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="brands.html">Thương hiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="blog.html">Tin công nghệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="search-wrap me-3">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Tìm sản phẩm, thương hiệu..."
+            />
+            <div id="searchSuggestions"></div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <a href="wishlist.html" class="badge-icon"
+              ><i class="bi bi-heart"></i
+              ><span class="badge wishlist-badge">0</span></a
+            >
+            <a href="compare.html" class="badge-icon"
+              ><i class="bi bi-arrow-left-right"></i
+              ><span class="badge compare-badge">0</span></a
+            >
+            <a href="cart.html" class="badge-icon"
+              ><i class="bi bi-cart3"></i
+              ><span class="badge cart-badge">0</span></a
+            >
+            <button
+              class="btn btn-sm btn-outline-secondary theme-toggle"
+              onclick="toggleTheme()"
+            >
+              <i class="bi bi-moon-fill"></i>
+            </button>
+            <div id="auth-area"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container my-4">
+      <div class="row g-4" id="blogPage">
+        <div class="col-12 text-center py-5">
+          <div class="spinner-border text-warning"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="text-center small py-4">
+          &copy; 2024 TechZone. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <button id="backTop"><i class="bi bi-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+      /* ============ BLOG DETAIL PAGE ============ */
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const blogId = Number(params.get("id")) || 1;
+        const blog = blogs.find((b) => b.id === blogId);
+        const container = document.getElementById("blogPage");
+
+        if (!blog) {
+          container.innerHTML = `
+      <div class="col-12 text-center py-5">
+        <i class="bi bi-emoji-frown display-1 text-muted"></i>
+        <h3 class="mt-3">Không tìm thấy bài viết</h3>
+        <a href="blog.html" class="btn btn-warning fw-bold mt-2">← Xem tất cả bài viết</a>
+      </div>`;
+          return;
+        }
+
+        document.title = blog.title + " | TechZone";
+
+        // Nội dung bài viết mẫu (giả lập phong phú theo từng bài)
+        const articleContent = `
+    <p class="lead">${blog.excerpt} Bài viết dưới đây sẽ phân tích chi tiết những điểm nổi bật, ưu nhược điểm và đưa ra lời khuyên hữu ích cho người dùng Việt Nam.</p>
+
+    <h2>1. Tổng quan nhanh</h2>
+    <p>Trong bối cảnh thị trường công nghệ ngày càng sôi động, việc lựa chọn đúng sản phẩm phù hợp với nhu cầu và ngân sách là điều vô cùng quan trọng. ${blog.title} là chủ đề được rất nhiều độc giả TechZone quan tâm trong thời gian gần đây.</p>
+    <img src="${blog.image}" alt="${blog.title}" loading="lazy">
+    <p>Với thiết kế hiện đại cùng nhiều cải tiến về hiệu năng, sản phẩm/dịch vụ được nhắc đến trong bài viết hứa hẹn mang lại trải nghiệm vượt trội so với các thế hệ tiền nhiệm.</p>
+
+    <h2>2. Ưu điểm nổi bật</h2>
+    <ul>
+      <li><strong>Hiệu năng mạnh mẽ:</strong> Trang bị chip thế hệ mới, xử lý mượt mọi tác vụ từ học tập, văn phòng đến gaming và đồ họa chuyên nghiệp.</li>
+      <li><strong>Thiết kế tinh tế:</strong> Ngôn ngữ thiết kế tối giản, chất liệu cao cấp, trọng lượng nhẹ, dễ dàng mang theo.</li>
+      <li><strong>Thời lượng pin ấn tượng:</strong> Đáp ứng trọn vẹn một ngày làm việc dài mà không lo hết pin.</li>
+      <li><strong>Hệ sinh thái đồng bộ:</strong> Kết nối mượt mà với các thiết bị khác trong cùng hệ sinh thái.</li>
+    </ul>
+
+    <blockquote>"Đây là một trong những sản phẩm đáng mua nhất trong phân khúc của nó tại thời điểm hiện tại — đặc biệt với những ai ưu tiên trải nghiệm ổn định và bền bỉ."</blockquote>
+
+    <h2>3. Nhược điểm cần cân nhắc</h2>
+    <p>Bên cạnh những ưu điểm, sản phẩm vẫn còn một số điểm hạn chế như mức giá chưa thực sự dễ tiếp cận với học sinh - sinh viên, và một vài tính năng chưa được tối ưu hoàn hảo cho thị trường Việt Nam.</p>
+    <ol>
+      <li>Mức giá cao so với mặt bằng chung.</li>
+      <li>Phụ kiện đi kèm còn khá hạn chế.</li>
+      <li>Chưa có nhiều tùy chọn màu sắc tại thị trường nội địa.</li>
+    </ol>
+
+    <h3>Bảng so sánh nhanh</h3>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead><tr><th>Tiêu chí</th><th>Thế hệ mới</th><th>Thế hệ cũ</th></tr></thead>
+        <tbody>
+          <tr><td>Hiệu năng</td><td class="text-success fw-bold">Vượt trội (+35%)</td><td>Đủ dùng</td></tr>
+          <tr><td>Pin</td><td class="text-success fw-bold">12 giờ</td><td>8 giờ</td></tr>
+          <tr><td>Camera</td><td class="text-success fw-bold">48MP</td><td>12MP</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. Kết luận</h2>
+    <p>Nhìn chung, ${blog.title.toLowerCase()} là một lựa chọn đáng cân nhắc cho người dùng Việt Nam trong năm 2024. Nếu ngân sách cho phép, đây chắc chắn là khoản đầu tư xứng đáng cho công việc và giải trí hàng ngày.</p>
+  `;
+
+        const related = blogs
+          .filter((b) => b.id !== blog.id && b.tag === blog.tag)
+          .slice(0, 3);
+        const relatedFallback = blogs
+          .filter((b) => b.id !== blog.id)
+          .slice(0, 3);
+        const relatedPosts = related.length ? related : relatedFallback;
+
+        const comments = JSON.parse(
+          localStorage.getItem("techzone-comments-" + blog.id) || "[]",
+        );
+
+        container.innerHTML = `
+    <!-- Breadcrumb -->
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="blog.html">Tin công nghệ</a></li>
+          <li class="breadcrumb-item active">${blog.title}</li>
+        </ol>
+      </nav>
+    </div>
+
+    <!-- Main content -->
+    <div class="col-lg-8">
+      <article>
+        <span class="badge bg-warning text-dark mb-2">${blog.tag}</span>
+        <h1 class="fw-bold mb-3">${blog.title}</h1>
+        <div class="d-flex align-items-center gap-3 mb-4 pb-3 border-bottom">
+          <img src="https://picsum.photos/seed/author${blog.id}/100/100" class="author-avatar" alt="${blog.author}">
+          <div>
+            <div class="fw-bold">${blog.author}</div>
+            <div class="small text-muted">
+              <i class="bi bi-calendar3"></i> ${blog.date} · <i class="bi bi-clock"></i> 5 phút đọc
+            </div>
+          </div>
+        </div>
+
+        <img src="${blog.image}" alt="${blog.title}" class="w-100 rounded mb-4" style="max-height:400px;object-fit:cover">
+
+        <div class="article-body">${articleContent}</div>
+
+        <!-- Share -->
+        <div class="d-flex align-items-center gap-2 my-4 py-3 border-top border-bottom">
+          <span class="fw-bold me-2">Chia sẻ:</span>
+          <a href="https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(location.href)}"
+             target="_blank" class="share-btn share-fb" title="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="https://sp.zalo.me/plugins/share?link=${encodeURIComponent(location.href)}"
+             target="_blank" class="share-btn share-zalo" title="Zalo"><i class="bi bi-chat-dots-fill"></i></a>
+          <a href="https://twitter.com/intent/tweet?url=${encodeURIComponent(location.href)}&text=${encodeURIComponent(blog.title)}"
+             target="_blank" class="share-btn share-tw" title="Twitter"><i class="bi bi-twitter"></i></a>
+          <button class="share-btn share-copy" onclick="copyLink()" title="Sao chép liên kết">
+            <i class="bi bi-link-45deg"></i>
+          </button>
+        </div>
+
+        <!-- Comments -->
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h5 class="fw-bold mb-3"><i class="bi bi-chat-left-text"></i> Bình luận (<span id="cmtCount">${comments.length}</span>)</h5>
+            <div class="d-flex gap-2 mb-3">
+              <img src="https://picsum.photos/seed/me/100/100" class="author-avatar" alt="Bạn">
+              <div class="flex-grow-1">
+                <textarea id="cmtInput" class="form-control mb-2" rows="2"
+                          placeholder="Viết bình luận của bạn..."></textarea>
+                <button class="btn btn-warning btn-sm fw-bold" onclick="postComment()">
+                  <i class="bi bi-send"></i> Gửi bình luận
+                </button>
+              </div>
+            </div>
+            <div id="cmtList"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+      <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3"><i class="bi bi-fire text-warning"></i> Bài viết nổi bật</h5>
+          ${blogs
+            .slice(0, 4)
+            .map(
+              (b) => `
+            <a href="blog-detail.html?id=${b.id}" class="d-flex gap-2 mb-3 text-decoration-none">
+              <img src="${b.image}" width="70" height="60" class="rounded" style="object-fit:cover;flex-shrink:0">
+              <div>
+                <div class="fw-semibold small" style="color:var(--text)">${b.title}</div>
+                <div class="text-muted" style="font-size:.75rem">${b.date}</div>
+              </div>
+            </a>`,
+            )
+            .join("")}
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm mb-3">
+        <div class="card-body">
+          <h5 class="fw-bold mb-3"><i class="bi bi-tags"></i> Tag</h5>
+          <div class="tag-cloud">
+            ${[
+              "Đánh giá",
+              "So sánh",
+              "Thủ thuật",
+              "Tin tức",
+              "Tư vấn",
+              "Khuyến mãi",
+            ]
+              .map(
+                (t) =>
+                  `<a href="blog.html?tag=${encodeURIComponent(t)}">${t}</a>`,
+              )
+              .join("")}
+          </div>
+        </div>
+      </div>
+
+      <div class="card border-0 shadow-sm" style="background:linear-gradient(135deg,var(--primary),var(--primary-dark))">
+        <div class="card-body text-dark">
+          <h5 class="fw-bold mb-2">📬 Nhận tin mới</h5>
+          <p class="small mb-3">Đăng ký nhận bài viết công nghệ mới nhất mỗi tuần!</p>
+          <input type="email" id="sideEmail" class="form-control mb-2" placeholder="Email của bạn">
+          <button class="btn btn-dark w-100 fw-bold" onclick="sideSubscribe()">Đăng ký</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bài liên quan -->
+    <div class="col-12 mt-4">
+      <div class="section-title">Bài viết liên quan</div>
+      <div class="row g-3">
+        ${relatedPosts
+          .map(
+            (b) => `
+          <div class="col-md-4">
+            <a href="blog-detail.html?id=${b.id}" class="text-decoration-none">
+              <div class="product-card h-100">
+                <img src="${b.image}" class="w-100" style="height:180px;object-fit:cover" loading="lazy">
+                <div class="p-3">
+                  <span class="badge bg-warning text-dark mb-2">${b.tag}</span>
+                  <h6 class="fw-bold" style="color:var(--text)">${b.title}</h6>
+                  <small class="text-muted">${b.date}</small>
+                </div>
+              </div>
+            </a>
+          </div>`,
+          )
+          .join("")}
+      </div>
+    </div>
+  `;
+
+        // ====== COMMENTS ======
+        function renderComments() {
+          const list = JSON.parse(
+            localStorage.getItem("techzone-comments-" + blog.id) || "[]",
+          );
+          const el = document.getElementById("cmtList");
+          const countEl = document.getElementById("cmtCount");
+          if (countEl) countEl.textContent = list.length;
+
+          if (!list.length) {
+            el.innerHTML =
+              '<p class="text-muted small mb-0">Chưa có bình luận. Hãy là người đầu tiên!</p>';
+            return;
+          }
+          el.innerHTML = list
+            .map(
+              (c) => `
+      <div class="d-flex gap-2 mb-3 pb-3 border-bottom">
+        <img src="https://picsum.photos/seed/${encodeURIComponent(c.name)}/100/100"
+             class="author-avatar" style="width:40px;height:40px" alt="${c.name}">
+        <div class="flex-grow-1">
+          <div class="d-flex justify-content-between">
+            <strong>${c.name}</strong>
+            <small class="text-muted">${c.date}</small>
+          </div>
+          <p class="mb-0 small">${c.text}</p>
+        </div>
+      </div>`,
+            )
+            .join("");
+        }
+
+        window.postComment = function () {
+          const input = document.getElementById("cmtInput");
+          const text = input.value.trim();
+          if (!text) return showToast("Vui lòng nhập bình luận", "warning");
+          const user = getCurrentUser();
+          const list = JSON.parse(
+            localStorage.getItem("techzone-comments-" + blog.id) || "[]",
+          );
+          list.unshift({
+            name: user ? user.name : "Khách",
+            text,
+            date: new Date().toLocaleString("vi-VN"),
+          });
+          localStorage.setItem(
+            "techzone-comments-" + blog.id,
+            JSON.stringify(list),
+          );
+          input.value = "";
+          renderComments();
+          showToast("Đã gửi bình luận!", "success");
+        };
+
+        window.copyLink = function () {
+          navigator.clipboard
+            .writeText(location.href)
+            .then(() => showToast("Đã sao chép liên kết!", "success"))
+            .catch(() => showToast("Không thể sao chép", "error"));
+        };
+
+        window.sideSubscribe = function () {
+          const email = document.getElementById("sideEmail").value.trim();
+          if (!/^\S+@\S+\.\S+$/.test(email))
+            return showToast("Email không hợp lệ", "error");
+          const list = JSON.parse(
+            localStorage.getItem("techzone-newsletter") || "[]",
+          );
+          if (!list.includes(email)) {
+            list.push(email);
+            localStorage.setItem("techzone-newsletter", JSON.stringify(list));
+          }
+          document.getElementById("sideEmail").value = "";
+          showToast("Đăng ký thành công! 🎉", "success");
+        };
+
+        renderComments();
+      })();
+    </script>
+  </body>
+</html>

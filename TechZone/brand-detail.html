@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Thương hiệu | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+    <style>
+      .brand-banner {
+        border-radius: 20px;
+        padding: 2.5rem;
+        color: #000;
+        position: relative;
+        overflow: hidden;
+      }
+      .brand-banner .brand-logo-big {
+        background: #fff;
+        border-radius: 16px;
+        padding: 1rem 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      }
+      .brand-banner .brand-logo-big img {
+        max-height: 48px;
+      }
+      .cat-pill {
+        border: 2px solid var(--border);
+        background: var(--card-bg);
+        color: var(--text);
+        padding: 0.5rem 1.1rem;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .cat-pill:hover {
+        border-color: var(--primary);
+        color: var(--primary-dark);
+      }
+      .cat-pill.active {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <span><i class="bi bi-telephone-fill"></i> Hotline: 1900 1234</span>
+        <span><i class="bi bi-truck"></i> Freeship đơn 500K</span>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="brands.html">Thương hiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Tin công nghệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="search-wrap me-3">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Tìm sản phẩm, thương hiệu..."
+            />
+            <div id="searchSuggestions"></div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <a href="wishlist.html" class="badge-icon"
+              ><i class="bi bi-heart"></i
+              ><span class="badge wishlist-badge">0</span></a
+            >
+            <a href="compare.html" class="badge-icon"
+              ><i class="bi bi-arrow-left-right"></i
+              ><span class="badge compare-badge">0</span></a
+            >
+            <a href="cart.html" class="badge-icon"
+              ><i class="bi bi-cart3"></i
+              ><span class="badge cart-badge">0</span></a
+            >
+            <button
+              class="btn btn-sm btn-outline-secondary theme-toggle"
+              onclick="toggleTheme()"
+            >
+              <i class="bi bi-moon-fill"></i>
+            </button>
+            <div id="auth-area"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="container my-4" id="brandPage">
+      <div class="text-center py-5">
+        <div class="spinner-border text-warning" role="status"></div>
+        <p class="mt-3 text-muted">Đang tải thương hiệu...</p>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="text-center small py-4">
+          &copy; 2024 TechZone. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <button id="backTop"><i class="bi bi-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+      /* ============ BRAND DETAIL PAGE ============ */
+      (function () {
+        const params = new URLSearchParams(location.search);
+        const brandId = params.get("id") || "apple";
+        const brand = brands.find((b) => b.id === brandId);
+        const container = document.getElementById("brandPage");
+
+        if (!brand) {
+          container.innerHTML = `
+      <div class="text-center py-5">
+        <i class="bi bi-emoji-frown display-1 text-muted"></i>
+        <h3 class="mt-3">Không tìm thấy thương hiệu</h3>
+        <a href="brands.html" class="btn btn-warning fw-bold mt-2">← Xem tất cả thương hiệu</a>
+      </div>`;
+          return;
+        }
+
+        document.title = brand.name + " | TechZone";
+
+        const brandProducts = products.filter((p) => p.brand === brand.id);
+        const brandCategories = [
+          ...new Set(brandProducts.map((p) => p.category)),
+        ];
+
+        // Gradient banner riêng cho từng thương hiệu
+        const gradients = {
+          apple: "linear-gradient(135deg,#fbbf24 0%,#f59e0b 100%)",
+          samsung: "linear-gradient(135deg,#fcd34d 0%,#ea580c 100%)",
+          xiaomi: "linear-gradient(135deg,#f59e0b 0%,#f97316 100%)",
+          oppo: "linear-gradient(135deg,#fbbf24 0%,#d97706 100%)",
+          dell: "linear-gradient(135deg,#fcd34d 0%,#f59e0b 100%)",
+          asus: "linear-gradient(135deg,#f59e0b 0%,#b45309 100%)",
+          hp: "linear-gradient(135deg,#fbbf24 0%,#ea580c 100%)",
+          lenovo: "linear-gradient(135deg,#fcd34d 0%,#d97706 100%)",
+        };
+
+        let currentCat = "all";
+
+        function render() {
+          const filtered =
+            currentCat === "all"
+              ? brandProducts
+              : brandProducts.filter((p) => p.category === currentCat);
+
+          container.innerHTML = `
+      <!-- Breadcrumb -->
+      <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
+          <li class="breadcrumb-item"><a href="brands.html">Thương hiệu</a></li>
+          <li class="breadcrumb-item active">${brand.name}</li>
+        </ol>
+      </nav>
+
+      <!-- Banner -->
+      <div class="brand-banner mb-4" style="background:${gradients[brand.id] || gradients.apple}">
+        <div class="row align-items-center">
+          <div class="col-md-3 text-center text-md-start mb-3 mb-md-0">
+            <div class="brand-logo-big">
+              <img src="${brand.logo}" alt="${brand.name}">
+            </div>
+          </div>
+          <div class="col-md-9">
+            <h1 class="fw-bold mb-2">${brand.name}</h1>
+            <p class="lead mb-2">${brand.desc}</p>
+            <div class="d-flex flex-wrap gap-3">
+              <span class="badge bg-dark text-warning fs-6">
+                <i class="bi bi-box-seam"></i> ${brandProducts.length} sản phẩm
+              </span>
+              <span class="badge bg-dark text-warning fs-6">
+                <i class="bi bi-grid"></i> ${brandCategories.length} danh mục
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter theo danh mục -->
+      <div class="d-flex flex-wrap gap-2 mb-4">
+        <button class="cat-pill ${currentCat === "all" ? "active" : ""}" data-cat="all">
+          Tất cả (${brandProducts.length})
+        </button>
+        ${brandCategories
+          .map((c) => {
+            const cat = categories.find((x) => x.id === c);
+            const count = brandProducts.filter((p) => p.category === c).length;
+            return `<button class="cat-pill ${currentCat === c ? "active" : ""}" data-cat="${c}">
+            <i class="bi ${cat.icon}"></i> ${cat.name} (${count})
+          </button>`;
+          })
+          .join("")}
+      </div>
+
+      <!-- Danh sách sản phẩm -->
+      <div class="section-title">Sản phẩm ${brand.name}</div>
+      <div class="row g-3" id="brandProducts">
+        ${
+          filtered.length
+            ? filtered.map((p) => productCardHTML(p)).join("")
+            : `
+          <div class="col-12 text-center py-5 text-muted">
+            <i class="bi bi-inbox display-1"></i>
+            <p class="mt-3">Chưa có sản phẩm trong danh mục này.</p>
+          </div>`
+        }
+      </div>
+    `;
+
+          // Gắn sự kiện filter
+          container.querySelectorAll(".cat-pill").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              currentCat = btn.dataset.cat;
+              render();
+            });
+          });
+        }
+
+        function productCardHTML(p) {
+          return `
+      <div class="col-6 col-md-4 col-lg-3">
+        <div class="product-card h-100">
+          <div class="product-thumb">
+            ${p.discount ? `<span class="badge bg-danger position-absolute top-0 start-0 m-2">-${p.discount}%</span>` : ""}
+            ${p.isNew ? `<span class="badge bg-success position-absolute top-0 end-0 m-2">Mới</span>` : ""}
+            <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+            <div class="product-actions">
+              <button onclick="toggleWishlist(${p.id})"><i class="bi bi-heart"></i></button>
+              <button onclick="toggleCompare(${p.id})"><i class="bi bi-arrow-left-right"></i></button>
+              <a href="product-detail.html?id=${p.id}"><i class="bi bi-eye"></i></a>
+            </div>
+          </div>
+          <div class="p-3">
+            <div class="text-muted small">${getBrandName(p.brand)}</div>
+            <a href="product-detail.html?id=${p.id}" class="text-decoration-none">
+              <h6 class="product-name">${p.name}</h6>
+            </a>
+            <div class="text-warning small mb-1">
+              ${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)}
+              <span class="text-muted">(${p.reviews})</span>
+            </div>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="price">${formatPrice(p.price)}</span>
+              ${p.oldPrice ? `<span class="old-price">${formatPrice(p.oldPrice)}</span>` : ""}
+            </div>
+            <button class="btn btn-warning btn-sm w-100 fw-bold" onclick="addToCart(${p.id})">
+              <i class="bi bi-cart-plus"></i> Thêm giỏ
+            </button>
+          </div>
+        </div>
+      </div>`;
+        }
+
+        render();
+      })();
+    </script>
+  </body>
+</html>

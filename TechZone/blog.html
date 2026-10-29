@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sản phẩm | TechZone</title>
+    <!-- Bootstrap & Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+    <link href="css/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <div class="container d-flex justify-content-between flex-wrap gap-2">
+        <div class="d-none d-md-flex gap-4">
+          <span><i class="bi bi-telephone-fill"></i> Hotline: 1900 1234</span>
+          <span><i class="bi bi-truck"></i> Freeship đơn 500K</span>
+        </div>
+        <div><i class="bi bi-tag-fill"></i> Flash Sale giảm tới 50%!</div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <button
+          class="navbar-toggler"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav me-3">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Trang chủ</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                data-bs-toggle="dropdown"
+                ><i class="bi bi-grid-3x3-gap"></i> Danh mục</a
+              >
+              <ul class="dropdown-menu shadow">
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=phone"
+                    >📱 Điện thoại</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=laptop"
+                    >💻 Laptop</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=tablet"
+                    >📲 Tablet</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=accessory"
+                    >🎧 Phụ kiện</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="products.html?cat=watch"
+                    >⌚ Đồng hồ</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="products.html">Sản phẩm</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="brands.html">Thương hiệu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Tin công nghệ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Liên hệ</a>
+            </li>
+          </ul>
+          <div class="search-wrap me-3">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              id="searchInput"
+              class="form-control"
+              placeholder="Tìm sản phẩm..."
+            />
+            <div id="searchSuggestions"></div>
+          </div>
+          <div class="d-flex align-items-center gap-2">
+            <a href="wishlist.html" class="badge-icon" title="Yêu thích"
+              ><i class="bi bi-heart"></i
+              ><span class="badge wishlist-badge">0</span></a
+            >
+            <a href="compare.html" class="badge-icon" title="So sánh"
+              ><i class="bi bi-arrow-left-right"></i
+              ><span class="badge compare-badge">0</span></a
+            >
+            <a href="cart.html" class="badge-icon" title="Giỏ hàng"
+              ><i class="bi bi-cart3"></i
+              ><span class="badge cart-badge">0</span></a
+            >
+            <button
+              class="btn btn-sm btn-outline-secondary theme-toggle"
+              onclick="toggleTheme()"
+            >
+              <i class="bi bi-moon-fill"></i>
+            </button>
+            <div id="auth-area"></div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container my-4">
+      <div class="row g-4">
+        <!-- SIDEBAR FILTER -->
+        <div class="col-lg-3">
+          <div
+            class="filter-sidebar mb-3 sticky-top"
+            style="top: 90px; z-index: 10"
+          >
+            <h6><i class="bi bi-funnel"></i> Bộ lọc</h6>
+
+            <!-- Danh mục -->
+            <div class="mb-3">
+              <label class="fw-semibold small mb-2 d-block">Danh mục</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="cat"
+                  value=""
+                  id="catAll"
+                  checked
+                />
+                <label class="form-check-label small" for="catAll"
+                  >Tất cả</label
+                >
+              </div>
+              <div id="filterCategories"></div>
+            </div>
+
+            <!-- Thương hiệu -->
+            <div class="mb-3">
+              <label class="fw-semibold small mb-2 d-block">Thương hiệu</label>
+              <div id="filterBrands"></div>
+            </div>
+
+            <!-- Khoảng giá -->
+            <div class="mb-3">
+              <label class="fw-semibold small mb-2 d-block">Khoảng giá</label>
+              <button
+                class="btn btn-sm btn-outline-warning w-100 mb-1 price-preset"
+                data-min="0"
+                data-max="5000000"
+              >
+                Dưới 5 triệu
+              </button>
+              <button
+                class="btn btn-sm btn-outline-warning w-100 mb-1 price-preset"
+                data-min="5000000"
+                data-max="10000000"
+              >
+                5 - 10 triệu
+              </button>
+              <button
+                class="btn btn-sm btn-outline-warning w-100 mb-1 price-preset"
+                data-min="10000000"
+                data-max="20000000"
+              >
+                10 - 20 triệu
+              </button>
+              <button
+                class="btn btn-sm btn-outline-warning w-100 price-preset"
+                data-min="20000000"
+                data-max="60000000"
+              >
+                Trên 20 triệu
+              </button>
+            </div>
+
+            <!-- RAM -->
+            <div class="mb-3">
+              <label class="fw-semibold small mb-2 d-block">RAM</label>
+              <div id="filterRam"></div>
+            </div>
+
+            <!-- Dung lượng -->
+            <div class="mb-3">
+              <label class="fw-semibold small mb-2 d-block">Dung lượng</label>
+              <div id="filterStorage"></div>
+            </div>
+
+            <!-- Đánh giá -->
+            <div class="mb-2">
+              <label class="fw-semibold small mb-2 d-block">Đánh giá</label>
+              <div class="form-check">
+                <input
+                  class="form-check-input filter-rating"
+                  type="radio"
+                  name="rat"
+                  value="4"
+                  id="rat-4"
+                />
+                <label class="form-check-label small" for="rat-4"
+                  >★★★★ trở lên</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input filter-rating"
+                  type="radio"
+                  name="rat"
+                  value="3"
+                  id="rat-3"
+                />
+                <label class="form-check-label small" for="rat-3"
+                  >★★★ trở lên</label
+                >
+              </div>
+            </div>
+
+            <button
+              class="btn btn-sm btn-outline-danger w-100 mt-2"
+              onclick="clearAllFilters()"
+            >
+              Xóa bộ lọc
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUCT GRID -->
+        <div class="col-lg-9">
+          <div
+            class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2"
+          >
+            <div>
+              <input
+                type="text"
+                id="searchInputFilter"
+                class="form-control form-control-sm"
+                placeholder="Tìm trong danh mục..."
+                style="width: 250px"
+              />
+              <small class="text-muted mt-1 d-block" id="resultCount"
+                >0 sản phẩm</small
+              >
+            </div>
+            <select
+              class="form-select form-select-sm"
+              id="sortSelect"
+              style="width: auto"
+            >
+              <option value="popular">Phổ biến</option>
+              <option value="newest">Mới nhất</option>
+              <option value="price-asc">Giá thấp → cao</option>
+              <option value="price-desc">Giá cao → thấp</option>
+              <option value="rating">Rating cao</option>
+              <option value="discount">% giảm nhiều</option>
+            </select>
+          </div>
+
+          <!-- Filter chips -->
+          <div id="filterChips" class="mb-3"></div>
+
+          <!-- Grid -->
+          <div class="row g-3" id="productGrid"></div>
+
+          <!-- Pagination -->
+          <nav class="mt-4">
+            <ul class="pagination justify-content-center" id="pagination"></ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container">
+        <div class="text-center small py-4">
+          &copy; 2024 TechZone. All rights reserved.
+        </div>
+      </div>
+    </footer>
+    <button id="backTop"><i class="bi bi-arrow-up"></i></button>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/wishlist.js"></script>
+    <script src="js/compare.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+
+    <!-- SCRIPT XỬ LÝ TRANG SẢN PHẨM -->
+    <script>
+      // 1. Khởi tạo State
+      let state = {
+        category: "",
+        brands: [],
+        priceMin: 0,
+        priceMax: 60000000,
+        ram: "",
+        storage: "",
+        rating: 0,
+        sort: "popular",
+        page: 1,
+        perPage: 8,
+        q: "",
+      };
+
+      // 2. Render các bộ lọc động (Danh mục, Brand, RAM, Dung lượng)
+      function renderFilterSidebar() {
+        // Render Danh mục
+        document.getElementById("filterCategories").innerHTML = categories
+          .map(
+            (c) => `
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="cat" value="${c.id}" id="cat-${c.id}">
+            <label class="form-check-label small" for="cat-${c.id}">${c.name}</label>
+          </div>
+        `,
+          )
+          .join("");
+
+        // Render Thương hiệu
+        document.getElementById("filterBrands").innerHTML = brands
+          .map(
+            (b) => `
+          <div class="form-check">
+            <input class="form-check-input filter-brand" type="checkbox" value="${b.id}" id="br-${b.id}">
+            <label class="form-check-label small" for="br-${b.id}">${b.name}</label>
+          </div>
+        `,
+          )
+          .join("");
+
+        // Render RAM
+        document.getElementById("filterRam").innerHTML = [
+          "4GB",
+          "8GB",
+          "12GB",
+          "16GB",
+          "32GB",
+        ]
+          .map(
+            (r) => `
+          <div class="form-check form-check-inline">
+            <input class="form-check-input filter-ram" type="radio" name="ram" value="${r}" id="ram-${r}">
+            <label class="form-check-label small" for="ram-${r}">${r}</label>
+          </div>
+        `,
+          )
+          .join("");
+
+        // Render Dung lượng
+        document.getElementById("filterStorage").innerHTML = [
+          "128GB",
+          "256GB",
+          "512GB",
+          "1TB",
+        ]
+          .map(
+            (s) => `
+          <div class="form-check form-check-inline">
+            <input class="form-check-input filter-storage" type="radio" name="sto" value="${s}" id="sto-${s}">
+            <label class="form-check-label small" for="sto-${s}">${s}</label>
+          </div>
+        `,
+          )
+          .join("");
+      }
+
+      // 3. Render Danh sách sản phẩm
+      function renderProducts() {
+        let list = [...products];
+
+        // Lọc theo Danh mục
+        if (state.category)
+          list = list.filter((p) => p.category === state.category);
+        // Lọc theo Brand
+        if (state.brands.length)
+          list = list.filter((p) => state.brands.includes(p.brand));
+        // Lọc theo Giá
+        list = list.filter(
+          (p) => p.price >= state.priceMin && p.price <= state.priceMax,
+        );
+        // Lọc theo RAM
+        if (state.ram) list = list.filter((p) => p.specs.ram === state.ram);
+        // Lọc theo Dung lượng
+        if (state.storage)
+          list = list.filter((p) => p.specs.storage.includes(state.storage));
+        // Lọc theo Rating
+        if (state.rating) list = list.filter((p) => p.rating >= state.rating);
+        // Lọc theo Search
+        if (state.q)
+          list = list.filter(
+            (p) =>
+              p.name.toLowerCase().includes(state.q.toLowerCase()) ||
+              getBrandName(p.brand)
+                .toLowerCase()
+                .includes(state.q.toLowerCase()),
+          );
+
+        // Sắp xếp
+        switch (state.sort) {
+          case "price-asc":
+            list.sort((a, b) => a.price - b.price);
+            break;
+          case "price-desc":
+            list.sort((a, b) => b.price - a.price);
+            break;
+          case "newest":
+            list.sort((a, b) => b.id - a.id);
+            break;
+          case "rating":
+            list.sort((a, b) => b.rating - a.rating);
+            break;
+          case "discount":
+            list.sort((a, b) => b.discount - a.discount);
+            break;
+          default:
+            list.sort((a, b) => b.sold - a.sold);
+        }
+
+        // Phân trang
+        const total = list.length;
+        const totalPages = Math.ceil(total / state.perPage);
+        const start = (state.page - 1) * state.perPage;
+        const pageItems = list.slice(start, start + state.perPage);
+
+        const grid = document.getElementById("productGrid");
+        if (!pageItems.length) {
+          grid.innerHTML =
+            '<div class="col-12 text-center py-5"><i class="bi bi-emoji-frown fs-1 text-muted"></i><p class="mt-3">Không tìm thấy sản phẩm phù hợp</p></div>';
+        } else {
+          grid.innerHTML = pageItems.map((p) => productCardHTML(p)).join("");
+        }
+
+        // Cập nhật bộ đếm & phân trang & chips
+        document.getElementById("resultCount").textContent =
+          `${total} sản phẩm`;
+        renderPagination(totalPages);
+        renderFilterChips();
+      }
+
+      // 4. HTML của Product Card
+      function productCardHTML(p) {
+        return `
+          <div class="col-6 col-md-4">
+            <div class="product-card h-100">
+              <div class="product-thumb">
+                ${p.discount ? `<span class="badge bg-danger position-absolute top-0 start-0 m-2">-${p.discount}%</span>` : ""}
+                ${p.isNew ? `<span class="badge bg-success position-absolute top-0 end-0 m-2">Mới</span>` : ""}
+                <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+                <div class="product-actions">
+                  <button onclick="toggleWishlist(${p.id})" title="Yêu thích"><i class="bi bi-heart"></i></button>
+                  <button onclick="toggleCompare(${p.id})" title="So sánh"><i class="bi bi-arrow-left-right"></i></button>
+                  <a href="product-detail.html?id=${p.id}" title="Xem chi tiết"><i class="bi bi-eye"></i></a>
+                </div>
+              </div>
+              <div class="p-3">
+                <div class="text-muted small">${getBrandName(p.brand)}</div>
+                <a href="product-detail.html?id=${p.id}" class="text-decoration-none">
+                  <h6 class="product-name">${p.name}</h6>
+                </a>
+                <div class="text-warning small mb-1">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)} <span class="text-muted">(${p.reviews})</span></div>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                  <span class="price">${formatPrice(p.price)}</span>
+                  ${p.oldPrice ? `<span class="old-price">${formatPrice(p.oldPrice)}</span>` : ""}
+                </div>
+                <button class="btn btn-warning btn-sm w-100 fw-bold" onclick="addToCart(${p.id})">
+                  <i class="bi bi-cart-plus"></i> Thêm giỏ
+                </button>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      // 5. Render Phân trang
+      function renderPagination(totalPages) {
+        const el = document.getElementById("pagination");
+        if (!el) return;
+        let html = "";
+        for (let i = 1; i <= totalPages; i++) {
+          html += `<li class="page-item ${i === state.page ? "active" : ""}"><a class="page-link" href="#" onclick="gotoPage(${i});return false;">${i}</a></li>`;
+        }
+        el.innerHTML = html;
+      }
+
+      function gotoPage(i) {
+        state.page = i;
+        renderProducts();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // 6. Render Filter Chips (Các thẻ hiển thị bộ lọc đang chọn)
+      function renderFilterChips() {
+        const el = document.getElementById("filterChips");
+        if (!el) return;
+        const chips = [];
+        if (state.category)
+          chips.push({
+            label: categories.find((c) => c.id === state.category)?.name,
+            clear: () => (state.category = ""),
+          });
+        state.brands.forEach((b) =>
+          chips.push({
+            label: getBrandName(b),
+            clear: () => (state.brands = state.brands.filter((x) => x !== b)),
+          }),
+        );
+        if (state.q)
+          chips.push({ label: `"${state.q}"`, clear: () => (state.q = "") });
+        if (state.rating)
+          chips.push({
+            label: `${state.rating}★ trở lên`,
+            clear: () => (state.rating = 0),
+          });
+
+        el.innerHTML = chips.length
+          ? chips
+              .map(
+                (c, i) =>
+                  `<span class="filter-chip">${c.label} <i class="bi bi-x" onclick="clearChip(${i})"></i></span>`,
+              )
+              .join("") +
+            `<button class="btn btn-sm btn-link text-danger text-decoration-none" onclick="clearAllFilters()">Xóa tất cả</button>`
+          : "";
+
+        window._chips = chips; // Lưu lại để hàm clearChip dùng
+      }
+
+      function clearChip(i) {
+        window._chips[i].clear();
+        state.page = 1;
+        renderProducts();
+        syncFilterUI();
+      }
+
+      function clearAllFilters() {
+        state = {
+          ...state,
+          category: "",
+          brands: [],
+          priceMin: 0,
+          priceMax: 60000000,
+          ram: "",
+          storage: "",
+          rating: 0,
+          q: "",
+          page: 1,
+        };
+        renderProducts();
+        syncFilterUI();
+      }
+
+      function syncFilterUI() {
+        document
+          .querySelectorAll(".filter-brand")
+          .forEach((cb) => (cb.checked = state.brands.includes(cb.value)));
+        document
+          .querySelectorAll('input[name="cat"]')
+          .forEach((r) => (r.checked = r.value === state.category));
+        document
+          .querySelectorAll('input[name="ram"]')
+          .forEach((r) => (r.checked = r.value === state.ram));
+        document
+          .querySelectorAll('input[name="sto"]')
+          .forEach((r) => (r.checked = r.value === state.storage));
+        document
+          .querySelectorAll('input[name="rat"]')
+          .forEach((r) => (r.checked = r.value == state.rating));
+      }
+
+      // 7. Khởi tạo và gắn sự kiện khi DOM Loaded
+      document.addEventListener("DOMContentLoaded", () => {
+        // Đọc params từ URL (vd: ?cat=laptop)
+        const params = new URLSearchParams(location.search);
+        if (params.get("cat")) state.category = params.get("cat");
+        if (params.get("q")) state.q = params.get("q");
+
+        // Render Sidebar trước
+        renderFilterSidebar();
+
+        // Gắn sự kiện cho Danh mục
+        document.querySelectorAll('input[name="cat"]').forEach((r) => {
+          r.addEventListener("change", (e) => {
+            state.category = e.target.value;
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện cho Thương hiệu
+        document.querySelectorAll(".filter-brand").forEach((cb) => {
+          cb.addEventListener("change", () => {
+            state.brands = [
+              ...document.querySelectorAll(".filter-brand:checked"),
+            ].map((x) => x.value);
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện Khoảng giá
+        document.querySelectorAll(".price-preset").forEach((b) => {
+          b.addEventListener("click", () => {
+            state.priceMin = +b.dataset.min;
+            state.priceMax = +b.dataset.max;
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện RAM
+        document.querySelectorAll(".filter-ram").forEach((r) => {
+          r.addEventListener("change", (e) => {
+            state.ram = e.target.value;
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện Dung lượng
+        document.querySelectorAll(".filter-storage").forEach((r) => {
+          r.addEventListener("change", (e) => {
+            state.storage = e.target.value;
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện Đánh giá
+        document.querySelectorAll(".filter-rating").forEach((r) => {
+          r.addEventListener("change", (e) => {
+            state.rating = +e.target.value;
+            state.page = 1;
+            renderProducts();
+          });
+        });
+
+        // Sự kiện Sắp xếp
+        document
+          .getElementById("sortSelect")
+          ?.addEventListener("change", (e) => {
+            state.sort = e.target.value;
+            renderProducts();
+          });
+
+        // Sự kiện Search trong danh mục
+        document
+          .getElementById("searchInputFilter")
+          ?.addEventListener("input", (e) => {
+            state.q = e.target.value;
+            state.page = 1;
+            renderProducts();
+          });
+
+        // Render lần đầu
+        renderProducts();
+        syncFilterUI();
+      });
+    </script>
+  </body>
+</html>
