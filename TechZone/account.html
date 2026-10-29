@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tài khoản | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/dark-mode.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <div class="ms-auto d-flex gap-2">
+          <a href="cart.html" class="badge-icon"
+            ><i class="bi bi-cart3"></i
+            ><span class="badge cart-badge">0</span></a
+          >
+          <div id="auth-area"></div>
+        </div>
+      </div>
+    </nav>
+    <div class="container my-5">
+      <div id="accountContent"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = getCurrentUser();
+        const el = document.getElementById("accountContent");
+        if (!user) {
+          el.innerHTML =
+            '<div class="alert alert-warning">Vui lòng <a href="login.html">đăng nhập</a> để xem tài khoản.</div>';
+          return;
+        }
+        const orders = JSON.parse(
+          localStorage.getItem("techzone-orders") || "[]",
+        );
+        el.innerHTML = `
+    <h2 class="fw-bold mb-4"><i class="bi bi-person-circle"></i> Tài khoản của tôi</h2>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="card border-0 shadow-sm"><div class="card-body text-center">
+          <i class="bi bi-person-circle display-1 text-warning"></i>
+          <h5 class="fw-bold mt-2">${user.name}</h5>
+          <p class="text-muted small mb-1">${user.email}</p>
+          <p class="text-muted small">${user.phone || ""}</p>
+          <button class="btn btn-outline-danger btn-sm" onclick="logoutUser()">Đăng xuất</button>
+        </div></div>
+      </div>
+      <div class="col-md-8">
+        <div class="card border-0 shadow-sm"><div class="card-body">
+          <h5 class="fw-bold mb-3"><i class="bi bi-box-seam"></i> Lịch sử đơn hàng (${orders.length})</h5>
+          ${
+            orders.length
+              ? orders
+                  .map(
+                    (o) => `
+            <div class="border rounded p-3 mb-2">
+              <div class="d-flex justify-content-between"><strong>Mã: ${o.code}</strong><span class="badge bg-warning text-dark">Đã đặt</span></div>
+              <div class="small text-muted">${new Date(o.createdAt).toLocaleString("vi-VN")} - ${o.items.length} sản phẩm</div>
+              <div class="fw-bold text-danger">${formatPrice(o.total)}</div>
+            </div>`,
+                  )
+                  .join("")
+              : '<p class="text-muted">Chưa có đơn hàng nào.</p>'
+          }
+        </div></div>
+      </div>
+    </div>`;
+      });
+    </script>
+  </body>
+</html>
