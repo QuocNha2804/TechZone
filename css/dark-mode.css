@@ -1,27 +1,163 @@
-/* Đã tích hợp vào style.css qua biến CSS -- nếu cần bổ sung */
+/* ==========================================================
+   TechZone - Dark Mode Theme Overrides
+   ========================================================== */
+
+html.dark body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+html.dark .card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+html.dark .card-body {
+  color: var(--text);
+}
+
+html.dark .modal-content {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+html.dark .dropdown-menu {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  box-shadow: var(--shadow-lg);
+}
+
+html.dark .dropdown-item {
+  color: var(--text);
+}
+
+html.dark .dropdown-item:hover {
+  background-color: rgba(251, 191, 36, 0.15);
+  color: var(--primary);
+}
+
+html.dark .product-card {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+}
+
 html.dark .product-thumb {
   background: #0f172a;
 }
+
 html.dark .brand-logo-box {
-  background: #fff;
+  background: #1e293b;
+  border-color: var(--border);
 }
+
+html.dark .brand-card {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+html.dark .brand-card .logo-wrap {
+  background: #1e293b;
+  border: 1px solid var(--border);
+}
+
+html.dark .category-item {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
+html.dark .category-item:hover {
+  border-color: var(--primary);
+  background: #1e293b;
+}
+
+html.dark .filter-sidebar {
+  background: var(--card-bg);
+  border-color: var(--border);
+}
+
 html.dark .hero-slide {
   color: #000;
 }
+
 html.dark .btn-outline-dark {
-  color: #fff;
+  color: #f1f5f9;
   border-color: #64748b;
 }
+
 html.dark .btn-outline-dark:hover {
   background: var(--primary);
   color: #000;
+  border-color: var(--primary);
 }
+
+html.dark .btn-close {
+  filter: invert(1) grayscale(100%) brightness(200%);
+}
+
 html.dark .table {
   color: var(--text);
+  border-color: var(--border);
 }
+
+html.dark .table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+}
+
 html.dark .form-control,
 html.dark .form-select {
-  background: var(--bg-secondary);
+  background-color: var(--bg-secondary);
   color: var(--text);
   border-color: var(--border);
+}
+
+html.dark .form-control:focus,
+html.dark .form-select:focus {
+  background-color: var(--bg);
+  color: var(--text);
+  border-color: var(--primary);
+}
+
+html.dark .nav-tabs {
+  border-bottom-color: var(--border);
+}
+
+html.dark .nav-tabs .nav-link {
+  color: var(--text-muted);
+}
+
+html.dark .nav-tabs .nav-link.active {
+  background-color: var(--card-bg);
+  border-color: var(--border) var(--border) var(--card-bg);
+  color: var(--primary);
+}
+
+html.dark .tab-content {
+  border-color: var(--border) !important;
+  background: var(--card-bg);
+}
+
+html.dark .list-group-item {
+  background-color: var(--card-bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
+html.dark .mobile-bottom-nav {
+  background-color: var(--nav-bg);
+  border-top-color: var(--border);
+}
+
+html.dark .breadcrumb-item a {
+  color: var(--primary-light);
+}
+
+html.dark .breadcrumb-item.active {
+  color: var(--text-muted);
+}
+
+html.dark .bg-body-tertiary {
+  background-color: #0f172a !important;
 }

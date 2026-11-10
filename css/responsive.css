@@ -1,10 +1,234 @@
-@media (min-width: 576px) {
+/* ==========================================================
+   TechZone - Responsive Styles for All Devices
+   Mobile (<= 576px), Tablet (577px - 991px), Desktop (>= 992px)
+   ========================================================== */
+
+/* ====== 1. Mobile (Extra Small & Small Devices: <= 576px) ====== */
+@media (max-width: 576px) {
+  /* Typography & Spacing */
+  h1 {
+    font-size: 1.6rem !important;
+  }
+  h2 {
+    font-size: 1.35rem !important;
+  }
+  .section-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+
+  /* Top Bar */
+  .top-bar {
+    font-size: 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  /* Navbar */
+  .navbar-techzone {
+    padding: 0.5rem 0;
+  }
+  .navbar-techzone .navbar-brand {
+    font-size: 1.35rem;
+  }
+  .navbar-techzone .badge-icon {
+    font-size: 1.15rem;
+    padding: 0.3rem 0.45rem;
+  }
+
+  /* Search Bar */
+  .search-wrap {
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .search-wrap input {
+    font-size: 0.88rem;
+    padding: 0.45rem 0.85rem 0.45rem 2.2rem;
+  }
+
+  /* Hero Banner / Slider */
+  .hero-slide {
+    min-height: 220px;
+    padding: 1.25rem;
+    border-radius: 14px;
+    margin: 0.75rem 0;
+  }
+  .hero-slide h1 {
+    font-size: 1.35rem !important;
+    line-height: 1.25;
+  }
+  .hero-slide .lead {
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+  }
+  .hero-slide .btn-hero {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  /* Category Items */
+  .category-item {
+    padding: 0.75rem 0.35rem;
+    border-radius: 12px;
+  }
+  .category-item i {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .category-item span {
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+
+  /* Flash Sale Banner */
+  .flash-sale-banner {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 14px;
+  }
+  .countdown-box {
+    min-width: 34px;
+    height: 34px;
+    font-size: 0.95rem;
+  }
+
+  /* Product Card */
+  .product-card {
+    border-radius: 12px;
+  }
+  .product-thumb {
+    height: 150px;
+  }
+  .product-thumb img {
+    max-height: 120px;
+  }
+  .product-card .p-3 {
+    padding: 0.75rem !important;
+  }
+  .product-card .product-name {
+    font-size: 0.85rem;
+    height: 2.3em;
+    line-height: 1.15em;
+    margin-bottom: 0.25rem;
+  }
   .product-card .price {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
+  }
+  .product-card .old-price {
+    font-size: 0.75rem;
+  }
+  .product-actions button,
+  .product-actions a {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  /* Brand Cards */
+  .brand-logo-box {
+    height: 60px;
+    padding: 0.5rem;
+  }
+  .brand-logo-box img {
+    max-height: 32px;
+  }
+
+  /* Cart & Checkout Items */
+  .cart-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* Modals */
+  .modal-dialog {
+    margin: 0.75rem;
+  }
+  .modal-body {
+    padding: 1.25rem !important;
+  }
+
+  /* Floating Contact */
+  .floating-contact {
+    bottom: 75px;
+    right: 14px;
+  }
+  .contact-pill {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
   }
 }
+
+/* ====== 2. Tablet (577px to 991px) ====== */
+@media (min-width: 577px) and (max-width: 991px) {
+  .hero-slide {
+    min-height: 320px;
+    padding: 2rem;
+  }
+  .product-thumb {
+    height: 180px;
+  }
+  .product-thumb img {
+    max-height: 150px;
+  }
+  .search-wrap {
+    max-width: 360px;
+  }
+}
+
+/* ====== 3. Desktop (>= 992px) ====== */
 @media (min-width: 992px) {
+  /* Ẩn Bottom Nav trên desktop */
+  .mobile-bottom-nav {
+    display: none !important;
+  }
+  /* Restore body padding on desktop */
+  body {
+    padding-bottom: 0 !important;
+  }
+  #backTop {
+    bottom: 2rem !important;
+    right: 2rem !important;
+  }
+  .floating-contact {
+    bottom: 30px;
+    right: 30px;
+  }
+  .hero-slide {
+    min-height: 400px;
+    padding: 3.5rem;
+  }
   .hero-slide h1 {
+    font-size: 2.8rem;
     letter-spacing: -0.5px;
   }
+  .product-thumb {
+    height: 220px;
+  }
+  .product-thumb img {
+    max-height: 180px;
+  }
+  .product-card .price {
+    font-size: 1.1rem;
+  }
+}
+
+/* ====== 4. Touch Device Optimization ====== */
+@media (hover: none) {
+  /* Always show quick action buttons on touch devices */
+  .product-actions {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* ====== 5. Table & Overflow Protection ====== */
+.table-responsive {
+  -webkit-overflow-scrolling: touch;
+}
+img {
+  max-width: 100%;
+  height: auto;
 }
