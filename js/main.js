@@ -12,13 +12,40 @@ window.addEventListener(
       const img = e.target;
       if (img.dataset.fallbackApplied) return;
       img.dataset.fallbackApplied = "true";
-      const alt = img.getAttribute("alt") || "TechZone";
+      const alt = (img.getAttribute("alt") || "TechZone").trim();
+
+      // Kiểm tra nếu là logo thương hiệu trong box thương hiệu
+      const isBrandBox = img.closest(".brand-logo-box, .logo-wrap, .brand-logo-big");
+      const matchedBrand =
+        typeof brands !== "undefined"
+          ? brands.find(
+              (b) =>
+                b.name.toLowerCase() === alt.toLowerCase() ||
+                b.id.toLowerCase() === alt.toLowerCase()
+            )
+          : null;
+
+      if (isBrandBox || matchedBrand) {
+        const brandName = (matchedBrand ? matchedBrand.name : alt)
+          .replace(/[<>"']/g, "");
+        const brandSvg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="100%" height="100%"><rect width="200" height="60" fill="#ffffff" rx="8"/><text x="100" y="38" font-family="'Helvetica Neue', Arial, sans-serif" font-weight="900" font-size="24" letter-spacing="2" fill="#1e293b" text-anchor="middle">${brandName}</text></svg>`;
+        try {
+          img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(brandSvg)));
+        } catch (_) {
+          img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(brandSvg);
+        }
+        return;
+      }
+
       if (typeof getProductSvgPlaceholder === "function") {
-        const cat = typeof detectCategoryByName === "function" ? detectCategoryByName(alt) : "phone";
+        const cat =
+          typeof detectCategoryByName === "function"
+            ? detectCategoryByName(alt)
+            : "phone";
         img.src = getProductSvgPlaceholder(cat, alt);
       } else {
         img.src =
-          "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><rect width='200' height='200' fill='%231e293b'/><text x='100' y='105' font-family='sans-serif' font-size='14' fill='%23f59e0b' text-anchor='middle'>TechZone</text></svg>";
+          "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj48cmVjdCB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iIzFlMjkzYiIvPjx0ZXh0IHg9IjEwMCIgeT0iMTA1IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZm9udC1zaXplPSIxNCIgZmlsbD0iI2Y1OWUwYiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VGVjaFpvbmU8L3RleHQ+PC9zdmc+";
       }
     }
   },

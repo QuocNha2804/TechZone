@@ -12,50 +12,74 @@ const brands = [
   {
     id: "apple",
     name: "Apple",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 170'><path fill='%23111827' d='M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.85-11.94-14.42-6.53-10.02-11.66-21.75-15.4-35.19-3.74-13.44-5.61-26.23-5.61-38.37 0-14.82 3.74-27.14 11.22-36.96 7.48-9.82 17.07-14.85 28.77-15.09 4.35 0 9.4 1.16 15.15 3.48 5.75 2.32 9.53 3.53 11.34 3.63 1.45 0 5.48-1.28 12.09-3.84 6.61-2.56 12.16-3.69 16.65-3.39 12.63.73 22.84 5.38 30.63 13.95-10.89 6.53-16.22 15.66-16 27.39.22 9.14 3.82 16.92 10.8 23.33 6.98 6.41 15.35 10.04 25.11 10.89-2.03 6.1-4.49 12.28-7.39 18.54zm-28.77-104.9c0-6.75 2.5-13.06 7.5-17.93 5-4.87 11.2-8.08 18.6-9.63.1 1.45.15 2.62.15 3.51 0 6.64-2.6 13.06-7.8 18.26-5.2 5.2-11.67 8.35-19.41 9.45-.48-1.2-.72-2.4-.72-3.66z'/></svg>",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNzAgMTcwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KICA8cGF0aCBmaWxsPSIjMTExODI3IiBkPSJNMTUwLjM3IDEzMC4yNWMtMi40NSA1LjY2LTUuMzUgMTAuODctOC43MSAxNS42Ni00LjU4IDYuNTMtOC4zMyAxMS4wNS0xMS4yMiAxMy41Ni00LjQ4IDQuMTItOS4yOCA2LjIzLTE0LjQyIDYuMzUtMy42OSAwLTguMTQtMS4wNS0xMy4zMi0zLjE4LTUuMTktMi4xMi05Ljk3LTMuMTctMTQuMzQtMy4xNy00LjU4IDAtOS40OSAxLjA1LTE0Ljc1IDMuMTctNS4yNiAyLjEzLTkuNSAzLjI0LTEyLjc0IDMuMzUtNC4zNS4xMy05LjE2LTEuOS0xNC40Mi02LjA4LTMuNjktMy4wNC03LjY3LTcuODUtMTEuOTQtMTQuNDItNi41My0xMC4wMi0xMS42Ni0yMS43NS0xNS40LTM1LjE5LTMuNzQtMTMuNDQtNS42MS0yNi4yMy01LjYxLTM4LjM3IDAtMTQuODIgMy43NC0yNy4xNCAxMS4yMi0zNi45NiA3LjQ4LTkuODIgMTcuMDctMTQuODUgMjguNzctMTUuMDkgNC4zNSAwIDkuNCAxLjE2IDE1LjE1IDMuNDggNS43NSAyLjMyIDkuNTMgMy41MyAxMS4zNCAzLjYzIDEuNDUgMCA1LjQ4LTEuMjggMTIuMDktMy44NCA2LjYxLTIuNTYgMTIuMTYtMy42OSAxNi42NS0zLjM5IDEyLjYzLjczIDIyLjg0IDUuMzggMzAuNjMgMTMuOTUtMTAuODkgNi41My0xNi4yMiAxNS42Ni0xNiAyNy4zOS4yMiA5LjE0IDMuODIgMTYuOTIgMTAuOCAyMy4zMyA2Ljk4IDYuNDEgMTUuMzUgMTAuMDQgMjUuMTEgMTAuODktMi4wMyA2LjEtNC40OSAxMi4yOC03LjM5IDE4LjU0em0tMjguNzctMTA0LjljMC02Ljc1IDIuNS0xMy4wNiA3LjUtMTcuOTMgNS00Ljg3IDExLjItOC4wOCAxOC42LTkuNjMuMSAxLjQ1LjE1IDIuNjIuMTUgMy41MSAwIDYuNjQtMi42IDEzLjA2LTcuOCAxOC4yNi01LjIgNS4yLTExLjY3IDguMzUtMTkuNDEgOS40NS0uNDgtMS4yLS43Mi0yLjQtLjcyLTMuNjZ6Ii8+Cjwvc3ZnPg==",
     desc: "Thương hiệu công nghệ hàng đầu thế giới",
   },
   {
     id: "samsung",
     name: "Samsung",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='42' font-family='Arial,sans-serif' font-weight='900' font-size='34' letter-spacing='4' fill='%230c4da2' text-anchor='middle'>SAMSUNG</text></svg>",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEyMCIgeT0iNDIiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzNCIgbGV0dGVyLXNwYWNpbmc9IjMiIGZpbGw9IiMwYzRkYTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPlNBTVNVTkc8L3RleHQ+Cjwvc3ZnPg==",
     desc: "Tập đoàn điện tử lớn nhất Hàn Quốc",
   },
   {
     id: "xiaomi",
     name: "Xiaomi",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23ff6900'/><path fill='%23fff' d='M30 30h14v22c0 2 1.5 3.5 3.5 3.5h7c2 0 3.5-1.5 3.5-3.5V30h14v24c0 8-6.5 14.5-14.5 14.5h-10c-8 0-14.5-6.5-14.5-14.5V30zm32 14v16h8V44h-8z'/></svg>",
-    desc: "Công nghệ chất lượng giá tốt",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxyZWN0IHg9IjgiIHk9IjUiIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgcng9IjE1IiBmaWxsPSIjZmY2OTAwIi8+CiAgPHBhdGggZmlsbD0iI2ZmZmZmZiIgZD0iTTIzIDIwaDd2MTFjMCAxIC44IDEuOCAxLjggMS44aDMuNGMxIDAgMS44LS44IDEuOC0xLjhWMjBoN3YxMmMwIDQtMy4yIDcuMi03LjIgNy4yaC01Yy00IDAtNy4yLTMuMi03LjItNy4yVjIwem0xNiA3djhoNHYtOGgtNHoiLz4KICA8dGV4dCB4PSI3NCIgeT0iNDEiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIyOCIgZmlsbD0iIzFmMjkzNyI+WGlhb21pPC90ZXh0Pgo8L3N2Zz4=",
+    desc: "Công nghệ chất lượng giá tốt, hệ sinh thái đa dạng",
   },
   {
     id: "oppo",
     name: "OPPO",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='44' font-family='Arial,sans-serif' font-weight='900' font-size='38' letter-spacing='2' fill='%23008453' text-anchor='middle'>OPPO</text></svg>",
-    desc: "Camera selfie đỉnh cao",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDQiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzOCIgbGV0dGVyLXNwYWNpbmc9IjMiIGZpbGw9IiMwMDg0NTMiIHRleHQtYW5jaG9yPSJtaWRkbGUiPk9QUE88L3RleHQ+Cjwvc3ZnPg==",
+    desc: "Chuyên gia camera phone & smartphone trẻ trung",
   },
   {
-    id: "dell",
-    name: "Dell",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='54' fill='none' stroke='%230076ce' stroke-width='8'/><text x='60' y='74' font-family='Arial,sans-serif' font-weight='900' font-size='36' letter-spacing='1' fill='%230076ce' text-anchor='middle'>DELL</text></svg>",
-    desc: "Laptop doanh nghiệp bền bỉ",
+    id: "sony",
+    name: "Sony",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDQiIGZvbnQtZmFtaWx5PSInVGltZXMgTmV3IFJvbWFuJywgR2VvcmdpYSwgc2VyaWYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmb250LXNpemU9IjM4IiBsZXR0ZXItc3BhY2luZz0iNSIgZmlsbD0iIzExMTgyNyIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U09OWTwvdGV4dD4KPC9zdmc+",
+    desc: "Đỉnh cao âm thanh & giải trí số Nhật Bản",
   },
   {
     id: "asus",
     name: "ASUS",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='44' font-family='Arial,sans-serif' font-weight='900' font-size='38' letter-spacing='5' fill='%2300539b' text-anchor='middle'>ASUS</text></svg>",
-    desc: "Laptop gaming & văn phòng",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDQiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzNiIgbGV0dGVyLXNwYWNpbmc9IjQiIGZpbGw9IiMwMDUzOWIiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFTVVM8L3RleHQ+CiAgPGxpbmUgeDE9IjI1IiB5MT0iMjgiIHgyPSIxNzUiIHkyPSIyOCIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIvPgo8L3N2Zz4=",
+    desc: "Laptop gaming ROG & Zenbook mỏng nhẹ",
+  },
+  {
+    id: "dell",
+    name: "Dell",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KICA8Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDA3NmNlIiBzdHJva2Utd2lkdGg9IjciLz4KICA8dGV4dCB4PSI2MCIgeT0iNzMiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzNCIgbGV0dGVyLXNwYWNpbmc9IjEiIGZpbGw9IiMwMDc2Y2UiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkRFTEw8L3RleHQ+Cjwvc3ZnPg==",
+    desc: "Laptop doanh nghiệp & đồ họa bền bỉ",
   },
   {
     id: "hp",
     name: "HP",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='54' fill='%230096d6'/><text x='60' y='76' font-family='Arial,sans-serif' font-style='italic' font-weight='900' font-size='46' fill='%23fff' text-anchor='middle'>hp</text></svg>",
-    desc: "Máy tính & thiết bị in",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAgMTIwIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KICA8Y2lyY2xlIGN4PSI2MCIgY3k9IjYwIiByPSI1NCIgZmlsbD0iIzAwOTZkNiIvPgogIDx0ZXh0IHg9IjYwIiB5PSI3NyIgZm9udC1mYW1pbHk9IidUaW1lcyBOZXcgUm9tYW4nLCBHZW9yZ2lhLCBzZXJpZiIgZm9udC1zdHlsZT0iaXRhbGljIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjUwIiBmaWxsPSIjZmZmZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5ocDwvdGV4dD4KPC9zdmc+",
+    desc: "Máy tính cá nhân & thiết bị văn phòng hiện đại",
   },
   {
     id: "lenovo",
     name: "Lenovo",
-    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect width='200' height='60' rx='8' fill='%23e2231a'/><text x='100' y='42' font-family='Arial,sans-serif' font-weight='900' font-size='30' letter-spacing='2' fill='%23ffffff' text-anchor='middle'>lenovo</text></svg>",
-    desc: "Laptop ThinkPad huyền thoại",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxyZWN0IHg9IjUiIHk9IjgiIHdpZHRoPSIxOTAiIGhlaWdodD0iNDQiIHJ4PSI0IiBmaWxsPSIjZTIyMzFhIi8+CiAgPHRleHQgeD0iMTAwIiB5PSIzOSIgZm9udC1mYW1pbHk9IidIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjI4IiBsZXR0ZXItc3BhY2luZz0iMiIgZmlsbD0iI2ZmZmZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSI+bGVub3ZvPC90ZXh0Pgo8L3N2Zz4=",
+    desc: "Laptop ThinkPad & Legion huyền thoại",
+  },
+  {
+    id: "lg",
+    name: "LG",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxODAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxjaXJjbGUgY3g9IjM1IiBjeT0iMzAiIHI9IjIyIiBmaWxsPSIjYTUwMDM0Ii8+CiAgPGNpcmNsZSBjeD0iMzUiIGN5PSIzMCIgcj0iMTYuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIvPgogIDxjaXJjbGUgY3g9IjI4IiBjeT0iMjQiIHI9IjIuNSIgZmlsbD0iI2ZmZmZmZiIvPgogIDxwYXRoIGQ9Ik0zNSAxOXYxMWg2LjUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDx0ZXh0IHg9IjcyIiB5PSI0MiIgZm9udC1mYW1pbHk9IidIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXdlaWdodD0iOTAwIiBmb250LXNpemU9IjM0IiBsZXR0ZXItc3BhY2luZz0iMiIgZmlsbD0iI2E1MDAzNCI+TEc8L3RleHQ+Cjwvc3ZnPg==",
+    desc: "Màn hình hiển thị & công nghệ cao cấp",
+  },
+  {
+    id: "anker",
+    name: "Anker",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDMiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjkwMCIgZm9udC1zaXplPSIzNCIgbGV0dGVyLXNwYWNpbmc9IjMiIGZpbGw9IiMwMGEwZGYiIHRleHQtYW5jaG9yPSJtaWRkbGUiPkFOS0VSPC90ZXh0Pgo8L3N2Zz4=",
+    desc: "Thương hiệu phụ kiện sạc số 1 toàn cầu",
+  },
+  {
+    id: "logitech",
+    name: "Logitech",
+    logo: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgNjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDx0ZXh0IHg9IjEwMCIgeT0iNDIiIGZvbnQtZmFtaWx5PSInSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC13ZWlnaHQ9IjgwMCIgZm9udC1zaXplPSIzMiIgbGV0dGVyLXNwYWNpbmc9IjEiIGZpbGw9IiMxMTE4MjciIHRleHQtYW5jaG9yPSJtaWRkbGUiPmxvZ2l0ZWNoPC90ZXh0Pgo8L3N2Zz4=",
+    desc: "Phụ kiện chuột, bàn phím & gaming đỉnh cao",
   },
 ];
 
@@ -485,7 +509,7 @@ const products = [
   {
     id: 15,
     name: "Sạc dự phòng Anker 20000mAh",
-    brand: "xiaomi",
+    brand: "anker",
     category: "accessory",
     price: 890000,
     oldPrice: 1290000,
@@ -605,7 +629,7 @@ const products = [
   {
     id: 19,
     name: "Tai nghe Sony WH-1000XM5",
-    brand: "oppo",
+    brand: "sony",
     category: "accessory",
     price: 6990000,
     oldPrice: 8990000,
@@ -782,6 +806,68 @@ const products = [
     isHot: true,
     flashSale: false,
   },
+  {
+    id: 25,
+    name: "Laptop LG Gram 16 2024 Intel Core Ultra 7",
+    brand: "lg",
+    category: "laptop",
+    price: 36990000,
+    oldPrice: 39990000,
+    discount: 8,
+    rating: 5,
+    reviews: 42,
+    sold: 89,
+    specs: {
+      ram: "16GB LPDDR5X",
+      cpu: "Intel Core Ultra 7 155H",
+      storage: "512GB NVMe SSD",
+      screen: "16 inch WQXGA (2560x1600) IPS",
+      battery: "80 Wh siêu bền",
+      weight: "1.19 kg",
+      os: "Windows 11 Home",
+    },
+    images: [
+      "https://picsum.photos/seed/lggram/600/600",
+      "https://picsum.photos/seed/lggramb/600/600",
+    ],
+    colors: ["Trắng Băng Tuyết", "Xám Titan"],
+    inStock: true,
+    isNew: true,
+    isHot: false,
+    flashSale: false,
+    tag: "new",
+  },
+  {
+    id: 26,
+    name: "Chuột không dây Logitech MX Master 3S",
+    brand: "logitech",
+    category: "accessory",
+    price: 2490000,
+    oldPrice: 2990000,
+    discount: 17,
+    rating: 5,
+    reviews: 156,
+    sold: 412,
+    specs: {
+      ram: "-",
+      cpu: "-",
+      storage: "-",
+      screen: "-",
+      battery: "Pin sạc dùng 70 ngày",
+      camera: "-",
+      os: "Windows, macOS, iPadOS, Linux",
+    },
+    images: [
+      "https://picsum.photos/seed/logimx/600/600",
+      "https://picsum.photos/seed/logimxb/600/600",
+    ],
+    colors: ["Đen Than Chì", "Xám Nhạt"],
+    inStock: true,
+    isNew: false,
+    isHot: true,
+    flashSale: true,
+    tag: "hot",
+  },
 ];
 
 // ============ BLOG ============
@@ -889,7 +975,7 @@ function detectCategoryByName(name) {
     t.includes("zenbook") ||
     t.includes("spectre") ||
     t.includes("zephyrus") ||
-    t.includes("dell inspiron")
+    t.includes("dell inspiron") || t.includes("lg gram")
   )
     return "laptop";
   if (

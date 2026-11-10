@@ -48,8 +48,8 @@ html.dark .product-thumb {
 }
 
 html.dark .brand-logo-box {
-  background: #1e293b;
-  border-color: var(--border);
+  background: #ffffff;
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 html.dark .brand-card {
@@ -58,8 +58,8 @@ html.dark .brand-card {
 }
 
 html.dark .brand-card .logo-wrap {
-  background: #1e293b;
-  border: 1px solid var(--border);
+  background: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 html.dark .category-item {
