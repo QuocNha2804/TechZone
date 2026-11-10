@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tài khoản | TechZone</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+      rel="stylesheet"
+    />
+    <link href="../css/style.css" rel="stylesheet" />
+    <link href="../css/dark-mode.css" rel="stylesheet" />
+    <link href="../css/responsive.css" rel="stylesheet" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-techzone">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html"
+          ><i class="bi bi-cpu"></i> Tech<span>Zone</span></a
+        >
+        <div class="ms-auto d-flex align-items-center gap-2">
+          <a href="products.html" class="nav-link d-none d-md-inline-block">Sản phẩm</a>
+          <a href="wishlist.html" class="badge-icon" title="Yêu thích">
+            <i class="bi bi-heart"></i><span class="badge wishlist-badge">0</span>
+          </a>
+          <a href="cart.html" class="badge-icon" title="Giỏ hàng">
+            <i class="bi bi-cart3"></i><span class="badge cart-badge">0</span>
+          </a>
+          <button
+            class="btn btn-sm btn-outline-secondary theme-toggle"
+            onclick="toggleTheme()"
+          >
+            <i class="bi bi-moon-fill"></i>
+          </button>
+          <div id="auth-area"></div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div id="accountContent"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container text-center small py-4 text-muted">
+        &copy; 2024 TechZone. All rights reserved.
+      </div>
+    </footer>
+
+    <button id="backTop"><i class="bi bi-arrow-up"></i></button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="../js/data.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/auth.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/wishlist.js"></script>
+    <script src="../js/compare.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = getCurrentUser();
+        const el = document.getElementById("accountContent");
+        if (!user) {
+          el.innerHTML =
+            '<div class="alert alert-warning p-4 text-center rounded-4 shadow-sm"><i class="bi bi-lock fs-2 d-block mb-2"></i>Vui lòng <a href="login.html" class="fw-bold">đăng nhập</a> để xem thông tin và lịch sử đơn hàng.</div>';
+          return;
+        }
+        const orders = JSON.parse(
+          localStorage.getItem("techzone-orders") || "[]",
+        );
+        el.innerHTML = `
+          <h2 class="fw-bold mb-4"><i class="bi bi-person-circle text-warning"></i> Tài khoản của tôi</h2>
+          <div class="row g-4">
+            <div class="col-md-4">
+              <div class="card border-0 shadow-sm rounded-4">
+                <div class="card-body text-center p-4">
+                  <div class="mb-3">
+                    <img src="../assets/images/avatar-default.svg" width="90" height="90" class="rounded-circle shadow-sm" alt="Avatar">
+                  </div>
+                  <h5 class="fw-bold mb-1">${user.name}</h5>
+                  <p class="text-muted small mb-1"><i class="bi bi-envelope"></i> ${user.email}</p>
+                  <p class="text-muted small mb-3"><i class="bi bi-telephone"></i> ${user.phone || "Chưa cập nhật"}</p>
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-outline-danger btn-sm fw-bold" onclick="logoutUser()">
+                      <i class="bi bi-box-arrow-right"></i> Đăng xuất
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="card border-0 shadow-sm rounded-4" id="orders">
+                <div class="card-body p-4">
+                  <h5 class="fw-bold mb-3 border-bottom pb-2">
+                    <i class="bi bi-box-seam text-warning"></i> Lịch sử đơn hàng (${orders.length})
+                  </h5>
+                  ${
+                    orders.length
+                      ? orders
+                          .map(
+                            (o) => `
+                    <div class="border rounded-3 p-3 mb-3 bg-card">
+                      <div class="d-flex justify-content-between align-items-center mb-2 flex-wrap gap-2">
+                        <strong>Mã đơn: <span class="text-primary">${o.code || "#TZ" + (o.id || Date.now()).toString().slice(-6)}</span></strong>
+                        <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25">Đang xử lý</span>
+                      </div>
+                      <div class="small text-muted mb-2">
+                        <i class="bi bi-clock"></i> ${new Date(o.createdAt || Date.now()).toLocaleString("vi-VN")} • ${o.items ? o.items.length : 1} sản phẩm
+                      </div>
+                      <div class="d-flex justify-content-between align-items-center border-top pt-2">
+                        <span class="small text-muted">Tổng thanh toán:</span>
+                        <span class="fw-bold text-danger fs-5">${formatPrice(o.total || 0)}</span>
+                      </div>
+                    </div>`,
+                          )
+                          .join("")
+                      : `
+                    <div class="text-center py-5 text-muted">
+                      <i class="bi bi-cart-x display-4 text-muted mb-2"></i>
+                      <p>Bạn chưa có đơn hàng nào.</p>
+                      <a href="products.html" class="btn btn-warning btn-sm fw-bold">Khám phá sản phẩm ngay</a>
+                    </div>`
+                  }
+                </div>
+              </div>
+            </div>
+          </div>`;
+      });
+    </script>
+  </body>
+</html>
