@@ -4,6 +4,7 @@
    ========================================================== */
 
 (function () {
+  window.__advancedSearchLoaded = true;
   let activeIndex = -1;
   let currentResults = [];
 
@@ -65,11 +66,11 @@
       results
         .map(
           (p, i) => `
-      <a href="product-detail.html?id=${p.id}"
+      <a href="${typeof getRelativePath === "function" ? getRelativePath("product-detail.html?id=" + p.id) : "product-detail.html?id=" + p.id}"
          class="search-suggest-item d-flex align-items-center gap-2 p-2 text-decoration-none"
          data-index="${i}">
         <img src="${p.images[0]}" width="44" height="44" class="rounded"
-             style="object-fit:cover;flex-shrink:0">
+             style="object-fit:cover;flex-shrink:0" alt="${p.name}">
         <div class="flex-grow-1 min-w-0">
           <div class="fw-semibold small text-truncate">${highlight(p.name, keyword)}</div>
           <div class="d-flex justify-content-between align-items-center">
@@ -82,7 +83,7 @@
         .join("") +
       `
       <div class="border-top p-2 text-center">
-        <a href="products.html?q=${encodeURIComponent(keyword)}"
+        <a href="${typeof getRelativePath === "function" ? getRelativePath("products.html?q=" + encodeURIComponent(keyword)) : "products.html?q=" + encodeURIComponent(keyword)}"
            class="small fw-bold text-warning text-decoration-none">
           Xem tất cả kết quả cho "${keyword}" →
         </a>
@@ -131,7 +132,10 @@
       const items = box.querySelectorAll(".search-suggest-item");
       if (!items.length) {
         if (e.key === "Enter") {
-          location.href = "products.html?q=" + encodeURIComponent(input.value);
+          const target = typeof getRelativePath === "function"
+            ? getRelativePath("products.html?q=" + encodeURIComponent(input.value))
+            : "products.html?q=" + encodeURIComponent(input.value);
+          location.href = target;
         }
         return;
       }
@@ -146,10 +150,15 @@
       } else if (e.key === "Enter") {
         e.preventDefault();
         if (activeIndex >= 0 && currentResults[activeIndex]) {
-          location.href =
-            "product-detail.html?id=" + currentResults[activeIndex].id;
+          const target = typeof getRelativePath === "function"
+            ? getRelativePath("product-detail.html?id=" + currentResults[activeIndex].id)
+            : "product-detail.html?id=" + currentResults[activeIndex].id;
+          location.href = target;
         } else {
-          location.href = "products.html?q=" + encodeURIComponent(input.value);
+          const target = typeof getRelativePath === "function"
+            ? getRelativePath("products.html?q=" + encodeURIComponent(input.value))
+            : "products.html?q=" + encodeURIComponent(input.value);
+          location.href = target;
         }
       } else if (e.key === "Escape") {
         box.style.display = "none";

@@ -42,13 +42,19 @@ function loginUser(email, password) {
 function logoutUser() {
   setCurrentUser(null);
   if (typeof showToast === "function") showToast("Đã đăng xuất", "info");
-  setTimeout(() => (location.href = "index.html"), 500);
+  const home = typeof getRelativePath === "function" ? getRelativePath("index.html") : "index.html";
+  setTimeout(() => (location.href = home), 500);
 }
 
 function renderAuthNav() {
   const user = getCurrentUser();
   const container = document.getElementById("auth-area");
   if (!container) return;
+
+  const accPath = typeof getRelativePath === "function" ? getRelativePath("account.html") : "account.html";
+  const wishPath = typeof getRelativePath === "function" ? getRelativePath("wishlist.html") : "wishlist.html";
+  const loginPath = typeof getRelativePath === "function" ? getRelativePath("login.html") : "login.html";
+
   if (user) {
     container.innerHTML = `
       <div class="dropdown">
@@ -56,15 +62,15 @@ function renderAuthNav() {
           <i class="bi bi-person-circle"></i> ${user.name.split(" ").pop()}
         </button>
         <ul class="dropdown-menu dropdown-menu-end shadow">
-          <li><a class="dropdown-item" href="account.html"><i class="bi bi-person"></i> Tài khoản</a></li>
-          <li><a class="dropdown-item" href="account.html#orders"><i class="bi bi-box-seam"></i> Đơn hàng</a></li>
-          <li><a class="dropdown-item" href="wishlist.html"><i class="bi bi-heart"></i> Yêu thích</a></li>
+          <li><a class="dropdown-item" href="${accPath}"><i class="bi bi-person"></i> Tài khoản</a></li>
+          <li><a class="dropdown-item" href="${accPath}#orders"><i class="bi bi-box-seam"></i> Đơn hàng</a></li>
+          <li><a class="dropdown-item" href="${wishPath}"><i class="bi bi-heart"></i> Yêu thích</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item text-danger" href="#" onclick="logoutUser();return false;"><i class="bi bi-box-arrow-right"></i> Đăng xuất</a></li>
         </ul>
       </div>`;
   } else {
     container.innerHTML = `
-      <a href="login.html" class="btn btn-warning fw-bold"><i class="bi bi-person"></i> Đăng nhập</a>`;
+      <a href="${loginPath}" class="btn btn-warning fw-bold"><i class="bi bi-person"></i> Đăng nhập</a>`;
   }
 }

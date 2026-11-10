@@ -17,36 +17,51 @@ document.addEventListener("DOMContentLoaded", () => {
 
   container.innerHTML = `
     <nav aria-label="breadcrumb"><ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="index.html">Trang chủ</a></li>
-      <li class="breadcrumb-item"><a href="products.html?cat=${p.category}">${categories.find((c) => c.id === p.category)?.name}</a></li>
+      <li class="breadcrumb-item"><a href="${typeof getRelativePath === "function" ? getRelativePath("index.html") : "../index.html"}">Trang chủ</a></li>
+      <li class="breadcrumb-item"><a href="${typeof getRelativePath === "function" ? getRelativePath("products.html?cat=" + p.category) : "products.html?cat=" + p.category}">${categories.find((c) => c.id === p.category)?.name || "Sản phẩm"}</a></li>
       <li class="breadcrumb-item active">${p.name}</li>
     </ol></nav>
     <div class="row g-4">
       <div class="col-md-6">
         <div class="detail-gallery">
-          <img id="mainImg" src="${p.images[0]}" class="img-fluid rounded main-img" alt="${p.name}">
-          <div class="d-flex gap-2 mt-3">
-            ${p.images.map((img, i) => `<img src="${img}" class="thumb ${i === 0 ? "active" : ""}" onclick="document.getElementById('mainImg').src='${img}';document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));this.classList.add('active')">`).join("")}
+          <div class="position-relative bg-body-tertiary rounded-4 p-3 mb-2 text-center">
+            <img id="mainImg" src="${p.images[0]}" class="img-fluid rounded main-img" alt="${p.name}" onerror="handleImgError(this, '${p.category}', '${p.name.replace(/'/g, "\\'")}')">
+            ${p.discount ? `<span class="badge bg-danger position-absolute top-0 start-0 m-3 fs-6">-${p.discount}%</span>` : ""}
+          </div>
+          <div class="d-flex gap-2 mt-3 overflow-auto pb-2">
+            ${p.images.map((img, i) => `<img src="${img}" class="thumb ${i === 0 ? "active" : ""}" onclick="document.getElementById('mainImg').src='${img}';document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));this.classList.add('active')" onerror="handleImgError(this, '${p.category}', '${p.name.replace(/'/g, "\\'")}')">`).join("")}
           </div>
         </div>
       </div>
       <div class="col-md-6">
-        <span class="badge bg-warning text-dark mb-2">${getBrandName(p.brand)}</span>
-        <h2 class="fw-bold">${p.name}</h2>
-        <div class="d-flex align-items-center gap-3 mb-2">
-          <div class="text-warning">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)}</div>
-          <span class="text-muted">${p.reviews} đánh giá</span>
-          <span class="text-muted">Đã bán ${p.sold}</span>
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="badge bg-warning text-dark">${getBrandName(p.brand)}</span>
+          <span class="badge bg-success bg-opacity-10 text-success border border-success border-opacity-25"><i class="bi bi-check-circle-fill"></i> Còn hàng</span>
         </div>
-        <div class="bg-warning bg-opacity-10 rounded p-3 mb-3">
-          <div class="d-flex align-items-center gap-2">
+        <h2 class="fw-bold mb-2">${p.name}</h2>
+        <div class="d-flex align-items-center gap-3 mb-3 flex-wrap">
+          <div class="text-warning">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)}</div>
+          <span class="text-muted small">${p.reviews} đánh giá</span>
+          <span class="text-muted small">Đã bán ${p.sold}</span>
+          <button class="btn btn-sm btn-outline-secondary ms-auto" onclick="navigator.clipboard.writeText(location.href);showToast('Đã sao chép liên kết sản phẩm!', 'success')" title="Chia sẻ">
+            <i class="bi bi-share"></i> Chia sẻ
+          </button>
+        </div>
+        <div class="bg-warning bg-opacity-10 rounded-4 p-3 mb-3">
+          <div class="d-flex align-items-baseline gap-2">
             <h3 class="text-danger fw-bold mb-0">${formatPrice(p.price)}</h3>
             ${p.oldPrice ? `<span class="text-muted text-decoration-line-through">${formatPrice(p.oldPrice)}</span><span class="badge bg-danger">-${p.discount}%</span>` : ""}
           </div>
-          <small class="text-success"><i class="bi bi-lightning-fill"></i> Tiết kiệm ${formatPrice(p.oldPrice - p.price)}</small>
+          <small class="text-success"><i class="bi bi-lightning-fill"></i> Tiết kiệm ${formatPrice(p.oldPrice ? p.oldPrice - p.price : 0)}</small>
         </div>
+
+        <div class="p-2 mb-3 rounded border border-warning bg-warning bg-opacity-10 d-flex justify-content-between align-items-center small">
+          <div><i class="bi bi-ticket-perforated-fill text-warning me-1"></i> Mã giảm giá: <strong>TECH10</strong> (Giảm 10%)</div>
+          <button class="btn btn-sm btn-warning py-0 px-2 fw-semibold" onclick="navigator.clipboard.writeText('TECH10');showToast('Đã copy mã TECH10! Dùng ở giỏ hàng nhé', 'success')">Copy</button>
+        </div>
+
         <div class="mb-3">
-          <label class="fw-semibold mb-2">Màu sắc:</label>
+          <label class="fw-semibold mb-2 d-block">Màu sắc:</label>
           <div class="d-flex flex-wrap gap-2">
             ${p.colors.map((c, i) => `<button class="btn btn-outline-dark variant-btn ${i === 0 ? "active" : ""}" onclick="selectVariant(this,'${c}')">${c}</button>`).join("")}
           </div>
@@ -62,6 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="d-flex gap-2 mb-3">
           <button class="btn btn-warning btn-lg flex-grow-1 fw-bold" onclick="doAdd()"><i class="bi bi-cart-plus"></i> Thêm giỏ</button>
           <button class="btn btn-danger btn-lg flex-grow-1 fw-bold" onclick="doAdd(true)">Mua ngay</button>
+          <button class="btn btn-outline-danger btn-lg" onclick="toggleWishlist(${p.id})" title="Thêm yêu thích"><i class="bi bi-heart"></i></button>
+          <button class="btn btn-outline-primary btn-lg" onclick="toggleCompare(${p.id})" title="So sánh"><i class="bi bi-arrow-left-right"></i></button>
         </div>
         <div class="row g-2 text-center small">
           <div class="col-4"><div class="p-2 border rounded"><i class="bi bi-shield-check text-warning fs-4"></i><div>Bảo hành 12 tháng</div></div></div>
@@ -112,10 +129,12 @@ document.addEventListener("DOMContentLoaded", () => {
             .map(
               (x) => `
             <div class="col-6 col-md-3">
-              <a href="product-detail.html?id=${x.id}" class="text-decoration-none">
-                <img src="${x.images[0]}" class="img-fluid rounded mb-2">
-                <div class="small fw-semibold">${x.name}</div>
-                <div class="text-warning fw-bold">${formatPrice(x.price)}</div>
+              <a href="${typeof getRelativePath === "function" ? getRelativePath("product-detail.html?id=" + x.id) : "product-detail.html?id=" + x.id}" class="text-decoration-none">
+                <div class="p-2 border rounded text-center h-100 bg-card">
+                  <img src="${x.images[0]}" class="img-fluid rounded mb-2" alt="${x.name}" onerror="handleImgError(this, '${x.category}', '${x.name.replace(/'/g, "\\'")}')" style="height:120px;object-fit:cover;">
+                  <div class="small fw-semibold text-truncate">${x.name}</div>
+                  <div class="text-warning fw-bold small">${formatPrice(x.price)}</div>
+                </div>
               </a>
             </div>`,
             )
@@ -138,7 +157,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   window.doAdd = function (buyNow) {
     addToCart(p.id, selectedVariant, qty);
-    if (buyNow) setTimeout(() => (location.href = "cart.html"), 300);
+    const cartUrl = typeof getRelativePath === "function" ? getRelativePath("cart.html") : "cart.html";
+    if (buyNow) setTimeout(() => (location.href = cartUrl), 300);
   };
   window.setRating = function (n) {
     document.querySelectorAll(".rate-star").forEach((s, i) => {

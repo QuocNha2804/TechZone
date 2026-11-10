@@ -77,28 +77,76 @@ function renderProducts() {
 }
 
 function productCardHTML(p) {
+  const detailUrl =
+    typeof getRelativePath === "function"
+      ? getRelativePath("product-detail.html?id=" + p.id)
+      : "product-detail.html?id=" + p.id;
+  const safeName = (p.name || "").replace(/'/g, "\\'");
+
+  if (state.view === "list") {
+    return `
+      <div class="col-12">
+        <div class="product-card h-100 p-3">
+          <div class="row align-items-center g-3">
+            <div class="col-sm-4 col-md-3 text-center">
+              <div class="product-thumb position-relative rounded overflow-hidden">
+                ${p.discount ? `<span class="badge bg-danger position-absolute top-0 start-0 m-2">-${p.discount}%</span>` : ""}
+                <img src="${p.images[0]}" alt="${p.name}" loading="lazy" class="img-fluid" onerror="handleImgError(this, '${p.category}', '${safeName}')">
+              </div>
+            </div>
+            <div class="col-sm-8 col-md-6">
+              <div class="text-muted small">${getBrandName(p.brand)}</div>
+              <a href="${detailUrl}" class="text-decoration-none">
+                <h5 class="product-name fw-bold mb-1">${p.name}</h5>
+              </a>
+              <div class="text-warning small mb-2">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)} <span class="text-muted">(${p.reviews} đánh giá)</span></div>
+              <div class="small text-muted mb-2">
+                ${p.specs.screen ? `<span>• ${p.specs.screen}</span> ` : ""}
+                ${p.specs.cpu ? `<span>• ${p.specs.cpu}</span> ` : ""}
+                ${p.specs.ram ? `<span>• RAM ${p.specs.ram}</span>` : ""}
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-3 text-md-end">
+              <div class="price fs-5 mb-1">${formatPrice(p.price)}</div>
+              ${p.oldPrice ? `<div class="old-price text-muted text-decoration-line-through small mb-2">${formatPrice(p.oldPrice)}</div>` : ""}
+              <div class="d-flex flex-md-column gap-2">
+                <button class="btn btn-warning btn-sm fw-bold flex-grow-1" onclick="addToCart(${p.id})">
+                  <i class="bi bi-cart-plus"></i> Thêm giỏ
+                </button>
+                <button class="btn btn-outline-secondary btn-sm" onclick="openQuickView(${p.id})">
+                  <i class="bi bi-eye"></i> Xem nhanh
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>`;
+  }
+
   return `
     <div class="col-lg-3 col-md-4 col-6">
       <div class="product-card h-100">
         <div class="product-thumb">
           ${p.discount ? `<span class="badge bg-danger position-absolute top-0 start-0 m-2">-${p.discount}%</span>` : ""}
           ${p.isNew ? `<span class="badge bg-success position-absolute top-0 end-0 m-2">Mới</span>` : ""}
-          <img src="${p.images[0]}" alt="${p.name}" loading="lazy">
+          <img src="${p.images[0]}" alt="${p.name}" loading="lazy" onerror="handleImgError(this, '${p.category}', '${safeName}')">
           <div class="product-actions">
             <button onclick="toggleWishlist(${p.id})" title="Yêu thích"><i class="bi bi-heart"></i></button>
             <button onclick="toggleCompare(${p.id})" title="So sánh"><i class="bi bi-arrow-left-right"></i></button>
-            <a href="product-detail.html?id=${p.id}" title="Xem"><i class="bi bi-eye"></i></a>
+            <button onclick="openQuickView(${p.id})" title="Xem nhanh"><i class="bi bi-eye"></i></button>
           </div>
         </div>
-        <div class="p-3">
-          <div class="text-muted small">${getBrandName(p.brand)}</div>
-          <a href="product-detail.html?id=${p.id}" class="text-decoration-none">
-            <h6 class="product-name">${p.name}</h6>
-          </a>
-          <div class="text-warning small mb-1">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)} <span class="text-muted">(${p.reviews})</span></div>
-          <div class="d-flex align-items-center gap-2">
-            <span class="price">${formatPrice(p.price)}</span>
-            ${p.oldPrice ? `<span class="old-price">${formatPrice(p.oldPrice)}</span>` : ""}
+        <div class="p-3 d-flex flex-column justify-content-between flex-grow-1">
+          <div>
+            <div class="text-muted small">${getBrandName(p.brand)}</div>
+            <a href="${detailUrl}" class="text-decoration-none">
+              <h6 class="product-name">${p.name}</h6>
+            </a>
+            <div class="text-warning small mb-1">${"★".repeat(p.rating)}${"☆".repeat(5 - p.rating)} <span class="text-muted">(${p.reviews})</span></div>
+            <div class="d-flex align-items-center gap-2 flex-wrap">
+              <span class="price">${formatPrice(p.price)}</span>
+              ${p.oldPrice ? `<span class="old-price">${formatPrice(p.oldPrice)}</span>` : ""}
+            </div>
           </div>
           <button class="btn btn-warning btn-sm w-100 mt-2 fw-bold" onclick="addToCart(${p.id})">
             <i class="bi bi-cart-plus"></i> Thêm giỏ

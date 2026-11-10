@@ -12,49 +12,49 @@ const brands = [
   {
     id: "apple",
     name: "Apple",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 170 170'><path fill='%23111827' d='M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.04-7.67-7.85-11.94-14.42-6.53-10.02-11.66-21.75-15.4-35.19-3.74-13.44-5.61-26.23-5.61-38.37 0-14.82 3.74-27.14 11.22-36.96 7.48-9.82 17.07-14.85 28.77-15.09 4.35 0 9.4 1.16 15.15 3.48 5.75 2.32 9.53 3.53 11.34 3.63 1.45 0 5.48-1.28 12.09-3.84 6.61-2.56 12.16-3.69 16.65-3.39 12.63.73 22.84 5.38 30.63 13.95-10.89 6.53-16.22 15.66-16 27.39.22 9.14 3.82 16.92 10.8 23.33 6.98 6.41 15.35 10.04 25.11 10.89-2.03 6.1-4.49 12.28-7.39 18.54zm-28.77-104.9c0-6.75 2.5-13.06 7.5-17.93 5-4.87 11.2-8.08 18.6-9.63.1 1.45.15 2.62.15 3.51 0 6.64-2.6 13.06-7.8 18.26-5.2 5.2-11.67 8.35-19.41 9.45-.48-1.2-.72-2.4-.72-3.66z'/></svg>",
     desc: "Thương hiệu công nghệ hàng đầu thế giới",
   },
   {
     id: "samsung",
     name: "Samsung",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='42' font-family='Arial,sans-serif' font-weight='900' font-size='34' letter-spacing='4' fill='%230c4da2' text-anchor='middle'>SAMSUNG</text></svg>",
     desc: "Tập đoàn điện tử lớn nhất Hàn Quốc",
   },
   {
     id: "xiaomi",
     name: "Xiaomi",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Xiaomi_logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23ff6900'/><path fill='%23fff' d='M30 30h14v22c0 2 1.5 3.5 3.5 3.5h7c2 0 3.5-1.5 3.5-3.5V30h14v24c0 8-6.5 14.5-14.5 14.5h-10c-8 0-14.5-6.5-14.5-14.5V30zm32 14v16h8V44h-8z'/></svg>",
     desc: "Công nghệ chất lượng giá tốt",
   },
   {
     id: "oppo",
     name: "OPPO",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/4/4b/OPPO_Logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='44' font-family='Arial,sans-serif' font-weight='900' font-size='38' letter-spacing='2' fill='%23008453' text-anchor='middle'>OPPO</text></svg>",
     desc: "Camera selfie đỉnh cao",
   },
   {
     id: "dell",
     name: "Dell",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/1/18/Dell_logo_2016.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='54' fill='none' stroke='%230076ce' stroke-width='8'/><text x='60' y='74' font-family='Arial,sans-serif' font-weight='900' font-size='36' letter-spacing='1' fill='%230076ce' text-anchor='middle'>DELL</text></svg>",
     desc: "Laptop doanh nghiệp bền bỉ",
   },
   {
     id: "asus",
     name: "ASUS",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/ASUS_Logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><text x='100' y='44' font-family='Arial,sans-serif' font-weight='900' font-size='38' letter-spacing='5' fill='%2300539b' text-anchor='middle'>ASUS</text></svg>",
     desc: "Laptop gaming & văn phòng",
   },
   {
     id: "hp",
     name: "HP",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/a/a8/HP_logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'><circle cx='60' cy='60' r='54' fill='%230096d6'/><text x='60' y='76' font-family='Arial,sans-serif' font-style='italic' font-weight='900' font-size='46' fill='%23fff' text-anchor='middle'>hp</text></svg>",
     desc: "Máy tính & thiết bị in",
   },
   {
     id: "lenovo",
     name: "Lenovo",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Lenovo_logo.svg",
+    logo: "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'><rect width='200' height='60' rx='8' fill='%23e2231a'/><text x='100' y='42' font-family='Arial,sans-serif' font-weight='900' font-size='30' letter-spacing='2' fill='%23ffffff' text-anchor='middle'>lenovo</text></svg>",
     desc: "Laptop ThinkPad huyền thoại",
   },
 ];
@@ -845,7 +845,7 @@ const blogs = [
 
 // ============ HELPER ============
 function formatPrice(n) {
-  return n.toLocaleString("vi-VN") + "₫";
+  return Number(n || 0).toLocaleString("vi-VN") + "₫";
 }
 
 function getProductById(id) {
@@ -855,4 +855,94 @@ function getProductById(id) {
 function getBrandName(id) {
   const b = brands.find((b) => b.id === id);
   return b ? b.name : id;
+}
+
+// Chuyển hướng hoặc sinh URL linh hoạt giữa root (index.html) và thư mục con (html/)
+function getRelativePath(targetFile) {
+  if (!targetFile) return "";
+  const path = window.location.pathname.replace(/\\/g, "/");
+  const isInsideHtml = path.includes("/html/");
+
+  // Nếu file đích là trang chủ index.html
+  if (targetFile === "index.html" || targetFile.startsWith("index.html#") || targetFile.startsWith("index.html?")) {
+    return isInsideHtml ? "../" + targetFile : targetFile;
+  }
+
+  // Nếu file đích nằm trong thư mục html/ (ví dụ 'products.html', 'cart.html')
+  if (isInsideHtml) {
+    // Nếu đang ở trong html/, gọi trực tiếp file anh em
+    return targetFile.replace(/^html\//, "");
+  } else {
+    // Nếu đang ở root, gọi html/targetFile
+    return targetFile.startsWith("html/") ? targetFile : "html/" + targetFile;
+  }
+}
+
+// Tự động nhận diện danh mục theo tên sản phẩm để vẽ icon chính xác
+function detectCategoryByName(name) {
+  const t = (name || "").toLowerCase();
+  if (
+    t.includes("laptop") ||
+    t.includes("macbook") ||
+    t.includes("thinkpad") ||
+    t.includes("xps") ||
+    t.includes("zenbook") ||
+    t.includes("spectre") ||
+    t.includes("zephyrus") ||
+    t.includes("dell inspiron")
+  )
+    return "laptop";
+  if (
+    t.includes("ipad") ||
+    t.includes("tablet") ||
+    t.includes("tab ") ||
+    t.includes("pad ")
+  )
+    return "tablet";
+  if (t.includes("watch") || t.includes("đồng hồ")) return "watch";
+  if (
+    t.includes("tai nghe") ||
+    t.includes("airpods") ||
+    t.includes("buds") ||
+    t.includes("sạc") ||
+    t.includes("sony wh") ||
+    t.includes("anker") ||
+    t.includes("headphone")
+  )
+    return "accessory";
+  return "phone";
+}
+
+// Smart SVG Placeholder generator khi ảnh hỏng/chưa load
+function getProductSvgPlaceholder(category, name) {
+  const cat = category || detectCategoryByName(name);
+  const iconMap = {
+    phone: `<rect x="130" y="70" width="140" height="260" rx="24" fill="none" stroke="#f59e0b" stroke-width="6"/><circle cx="200" cy="300" r="10" fill="#f59e0b"/><line x1="170" y1="95" x2="230" y2="95" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>`,
+    laptop: `<path d="M90 120h220v130H90z" fill="none" stroke="#f59e0b" stroke-width="6" rx="8"/><path d="M60 260h280a10 10 0 0 1 10 10v10H50v-10a10 10 0 0 1 10-10z" fill="#f59e0b"/><rect x="175" y="260" width="50" height="6" rx="3" fill="#1e293b"/>`,
+    tablet: `<rect x="100" y="80" width="200" height="240" rx="18" fill="none" stroke="#f59e0b" stroke-width="6"/><circle cx="200" cy="295" r="8" fill="#f59e0b"/>`,
+    accessory: `<path d="M120 200v-50a80 80 0 0 1 160 0v50" fill="none" stroke="#f59e0b" stroke-width="6"/><rect x="100" y="190" width="35" height="60" rx="14" fill="#f59e0b"/><rect x="265" y="190" width="35" height="60" rx="14" fill="#f59e0b"/>`,
+    watch: `<rect x="160" y="40" width="80" height="320" rx="12" fill="#334155"/><rect x="140" y="130" width="120" height="140" rx="28" fill="#1e293b" stroke="#f59e0b" stroke-width="6"/><circle cx="200" cy="200" r="30" fill="none" stroke="#f59e0b" stroke-width="4"/><line x1="200" y1="200" x2="200" y2="185" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/><line x1="200" y1="200" x2="215" y2="200" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>`,
+  };
+  const icon = iconMap[cat] || iconMap.phone;
+  const safeName = (name || "TechZone").replace(/</g, "").replace(/>/g, "").replace(/"/g, "");
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+    <defs>
+      <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1e293b"/>
+        <stop offset="100%" stop-color="#0f172a"/>
+      </linearGradient>
+    </defs>
+    <rect width="400" height="400" fill="url(#bg)"/>
+    <circle cx="200" cy="200" r="130" fill="#f59e0b" fill-opacity="0.08"/>
+    ${icon}
+    <text x="200" y="360" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="14" fill="#94a3b8" text-anchor="middle">${safeName.slice(0, 32)}</text>
+  </svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+
+function handleImgError(img, cat = "", name = "") {
+  if (!img || img.dataset.failed) return;
+  img.dataset.failed = "true";
+  const finalCat = cat || detectCategoryByName(name || img.alt);
+  img.src = getProductSvgPlaceholder(finalCat, name || img.alt);
 }
